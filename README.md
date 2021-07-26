@@ -52,7 +52,7 @@ The SDGs(Sustainable Development Goals) adopted by the United Nations include "C
 
 ## The architecture
 
-![Green Farm architecture](https://github.com/GreenFarmCsa/greenfarm/blob/main/architecture.jpg)
+![Green Farm architecture](https://github.com/GreenFarmCsa/greenfarm/blob/main/architecture-greenfarm.jpg)
 
 1. Farmers measure the unoccupied lands by AR and leased them.
 2. Consumers browse the farm by VR and subscribe to the CSA box or even rent lands.
