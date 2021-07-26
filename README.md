@@ -61,17 +61,10 @@ The SDGs(Sustainable Development Goals) adopted by the United Nations include "C
 5. The app gets farms info from IBM Mysql and gets planting instructions from the FAO database.
 6. Farmers use app to record planting info. The info will be stored on IBM Blockchain platform to ensure the credibility and traceability of the planting data.
 
-### The Federated Learning Logic
-
-![Green Farm Federated Learning](https://github.com/GreenFarmCsa/greenfarm/blob/main/FederatedLearning.jpg)
-
-1. Train model through model parameters.
-2. Green Farm has various data of users in one account.
-3. Recommend financial products to farmers through the federal learning network.
 
 ## Long description
 
-[More detail is available here](https://github.com/GreenFarmCsa/greenfarm/blob/main/Long%20Description_Green%20Farm.doc)
+[More detail is available here](https://github.com/GreenFarmCsa/greenfarm/blob/main/Long%20Description_Green%20Farm.md)
 
 ## Project roadmap
 
