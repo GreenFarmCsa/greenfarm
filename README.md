@@ -2,7 +2,9 @@
 
 *IBM : Call for Code 2021*
 
-**Green Farm is a tech-for-good, green and digital solution based on CSA which promotes the green agricultural production for small farmers, provides responsible produce for consumers. It is available for download on Apple Store.  **
+**Green Farm is a tech-for-good, green and digital solution based on CSA which promotes the green agricultural production for small farmers, provides responsible produce for consumers. It is available for download on Apple Store.**
+
+*CSA : Community Supported Agriculture. CSA regularly provides consumers with fresh products from local farms. It is a sustainable alternative to industrial agriculture*
 
 ## Contents
 
