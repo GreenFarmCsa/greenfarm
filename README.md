@@ -94,7 +94,6 @@ You can find a deployed app on App store. For more details, see [Getting started
 - [IBM Blockchain Platform](https://cloud.ibm.com/catalog?search=Blockchain%20Platform#search_results) - The backend application used
 - [IBM Waston](https://www.ibm.com/watson) - The recommendation logic
 - [IBM Cloud object storage](https://cloud.ibm.com/catalog?search=object%20storage#search_results) - The backend application used
-- [IBM Mysql](https://cloud.ibm.com/catalog?search=Mysql#search_results) - The backend application used
 - [Live Streaming]() - The ios app used
 - [AR]() - The ios app used
 - [VR]() - The ios app used
