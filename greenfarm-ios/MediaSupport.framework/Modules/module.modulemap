@@ -1,0 +1,6 @@
+framework module MediaSupport {
+  umbrella header "MediaSupport.h"
+
+  export *
+  module * { export * }
+}

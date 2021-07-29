@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>jsapis</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>UMJsApi4VRCamera</string>
+			<key>jsApi</key>
+			<string>jumpVRCamera</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>UMJsApi4VRPlay</string>
+			<key>jsApi</key>
+			<string>jumpVR</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>UMJsApi4JumpCamera</string>
+			<key>jsApi</key>
+			<string>jumpCamera</string>
+		</dict>
+		<dict>
+			<key>jsApi</key>
+			<string>liveAPI</string>
+			<key>name</key>
+			<string>UMJsApi4Live</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>UMJsApi4JumpTab</string>
+			<key>jsApi</key>
+			<string>jumpTab</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>UMJsApi4Ruler</string>
+			<key>jsApi</key>
+			<string>jumpRuler</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>UMJsApi4Map</string>
+			<key>jsApi</key>
+			<string>jumpMap</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>UMJsApi4MapSelect</string>
+			<key>jsApi</key>
+			<string>jumpMapSelect</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,125 @@
+<!doctype html>
+<html><head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="content-Type" content="text/html; charset=UTF-8" />
+	<style type='text/css'>
+		html { font-family:Helvetica; color:#222; }
+        a { color:steelblue; font-size:17px; margin-top:10px; }
+		h1 { color:steelblue; font-size:24px; margin-top:24px; }
+		button { margin:0 3px 10px; font-size:12px; }
+		.logLine { border-bottom:1px solid #ccc; padding:4px 2px; font-family:courier; font-size:11px; }
+	</style>
+</head><body>
+    <title>demo</title>
+    <a href="https://www.baidu.com">打开百度链接</a>
+	<h1>demo</h1>
+    
+    <input type = "button" onclick = "btnRst_Click()" value = "跳转到首页" >
+                            <script>
+                                function btnRst_Click() {
+                                    window.UMJSBridge.callHandler('jumpTab', {'index': '0'}, function(response) {
+                                        //alert('1234'+response);
+                                        //log('JS got response', response)
+                                    })
+                                   
+                                }
+                            </script>
+                    </input>
+    <input type = "button" onclick = "btnRst_Click1()" value = "跳转新浪" >
+                            <script>
+                                function btnRst_Click1() {
+                                    window.UMJSBridge.callHandler('jumpTab', {'index': '1'}, function(response) {
+                                    })
+                                }
+                            </script>
+                    </input>
+    <input type = "button" onclick = "btnRst_Click2()" value = "推流" >
+                            <script>
+                                function btnRst_Click2() {
+                                    window.UMJSBridge.callHandler('liveAPI', {'index': '0',"url":"rtmp://ec2-52-80-243-127.cn-north-1.compute.amazonaws.com.cn:8090/zbs/4321"}, function(response) {
+                                        alert('1234'+response);
+                                        //log('JS got response', response)
+                                    })
+                                   
+                                }
+                            </script>
+                    </input>
+    <input type = "button" onclick = "btnRst_Click3()" value = "拉流" >
+                            <script>
+                                function btnRst_Click3() {
+                                    window.UMJSBridge.callHandler('liveAPI', {'index': '1',"url":"rtmp://ec2-52-80-243-127.cn-north-1.compute.amazonaws.com.cn:8090/zbs/7dhcfd7yfsd","username":"Christensen","imgurl":"http://192.168.81.160:80/record/logo.jpg","location":"XiQing,Tianjin"}, function(response) {
+                                    })
+                                }
+                            </script>
+                    </input>
+    <input type = "button" onclick = "btnRst_Click4()" value = "拍摄录制" >
+                            <script>
+                                function btnRst_Click4() {
+                                    window.UMJSBridge.callHandler('jumpCamera', {"type":1,"maxSelectable":9,"mimeType":2,"maxRecordTime":30,"capture":true}, function(response) {
+                                       alert(JSON.stringify(response));
+                                    })
+                                    window.UMJSBridge.registerHandler('jumpCamera' , function(data, responseCallback) {
+                                          alert(JSON.stringify(data));
+                                         responseCallback('adsasda');
+                                    })
+                                }
+                            </script>
+                    </input>
+    
+    <input type = "button" onclick = "btnRst_Click6()" value = "进入地图" >
+                            <script>
+                                function btnRst_Click6() {
+                                    window.UMJSBridge.callHandler('jumpMapSelect', {}, function(response) {
+                                       alert(JSON.stringify(response));
+                                    })
+
+                                }
+                            </script>
+                    </input>
+    
+    <input type = "button" onclick = "btnRst_Click5()" value = "照片选择" >
+                            <script>
+                                function btnRst_Click5() {
+                                    window.UMJSBridge.callHandler('jumpCamera', {"type":0,"maxSelectable":9,"mimeType":2,"maxRecordTime":30,"capture":true}, function(response) {
+                                        alert('1234'+response);
+                                    })
+                                    window.UMJSBridge.registerHandler('jumpCamera' , function(data, responseCallback) {
+                                        alert(JSON.stringify(data));
+                                        responseCallback('adsasda');
+                                    })
+                                    
+                                }
+                                
+                            </script>
+                    </input>    <div id='buttons'></div> <div id='log'></div>
+    
+    <input type = "button" onclick = "btnRst_Click7()" value = "vr播放" >
+                            <script>
+                                function btnRst_Click7() {
+                                    window.UMJSBridge.callHandler('jumpVR', {
+<!--                                       "url":"http://192.168.81.160:80/record/2048.jpg"-->
+"url":"http://ec2-52-80-243-127.cn-north-1.compute.amazonaws.com.cn:8081/file/download?url=/home/ec2-user/green_farm/files/7435bf1b9de043a39613f87e0ae5d8d2-1626070264d.jpg"
+                                    }, function(response) {
+                                    })
+                                }
+                            </script>
+                    </input>
+    <input type = "button" onclick = "btnRst_Click8()" value = "vr拍摄" >
+                            <script>
+                                function btnRst_Click8() {
+                                    window.UMJSBridge.callHandler('jumpVRCamera', {}, function(response) {
+                                        alert(JSON.stringify(response));
+                                    })
+                                    window.UMJSBridge.registerHandler('jumpVRCamera' , function(data, responseCallback) {
+                                          alert(JSON.stringify(data));
+                                         responseCallback('adsasda');
+                                    })
+                                }
+                            </script>
+                    </input>
+    
+<!--    <video width="270" height="480" controls>-->
+<!--        <source src="http://192.168.81.160/record/7dhcfd7yfsd.mp4" type="video/mp4">-->
+<!--    </video>-->
+	
+</body></html>
