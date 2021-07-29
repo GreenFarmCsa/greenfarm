@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callforcode.greenfarm.mapper.GFTopicMapper">
+  <resultMap id="BaseResultMap" type="com.callforcode.greenfarm.entity.GFTopic">
+    <id column="topic_id" jdbcType="INTEGER" property="topicId" />
+    <result column="community_id" jdbcType="INTEGER" property="communityId" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="topic_name" jdbcType="VARCHAR" property="topicName" />
+    <result column="topic_content" jdbcType="VARCHAR" property="topicContent" />
+    <result column="topic_image_url" jdbcType="VARCHAR" property="topicImageUrl" />
+    <result column="like_sum" jdbcType="INTEGER" property="likeSum" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    topic_id, community_id, username, topic_name, topic_content, topic_image_url, like_sum, 
+    create_time, modify_time, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gf_topic
+    where topic_id = #{topicId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from gf_topic
+    where topic_id = #{topicId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="topic_id" keyProperty="topicId" parameterType="com.callforcode.greenfarm.entity.GFTopic" useGeneratedKeys="true">
+    insert into gf_topic (community_id, username, topic_name, 
+      topic_content, topic_image_url, like_sum, 
+      create_time, modify_time, remark
+      )
+    values (#{communityId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{topicName,jdbcType=VARCHAR}, 
+      #{topicContent,jdbcType=VARCHAR}, #{topicImageUrl,jdbcType=VARCHAR}, #{likeSum,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="topic_id" keyProperty="topicId" parameterType="com.callforcode.greenfarm.entity.GFTopic" useGeneratedKeys="true">
+    insert into gf_topic
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="communityId != null">
+        community_id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="topicName != null">
+        topic_name,
+      </if>
+      <if test="topicContent != null">
+        topic_content,
+      </if>
+      <if test="topicImageUrl != null">
+        topic_image_url,
+      </if>
+      <if test="likeSum != null">
+        like_sum,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="communityId != null">
+        #{communityId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="topicName != null">
+        #{topicName,jdbcType=VARCHAR},
+      </if>
+      <if test="topicContent != null">
+        #{topicContent,jdbcType=VARCHAR},
+      </if>
+      <if test="topicImageUrl != null">
+        #{topicImageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="likeSum != null">
+        #{likeSum,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.callforcode.greenfarm.entity.GFTopic">
+    update gf_topic
+    <set>
+      <if test="communityId != null">
+        community_id = #{communityId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="topicName != null">
+        topic_name = #{topicName,jdbcType=VARCHAR},
+      </if>
+      <if test="topicContent != null">
+        topic_content = #{topicContent,jdbcType=VARCHAR},
+      </if>
+      <if test="topicImageUrl != null">
+        topic_image_url = #{topicImageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="likeSum != null">
+        like_sum = #{likeSum,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where topic_id = #{topicId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.callforcode.greenfarm.entity.GFTopic">
+    update gf_topic
+    set community_id = #{communityId,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      topic_name = #{topicName,jdbcType=VARCHAR},
+      topic_content = #{topicContent,jdbcType=VARCHAR},
+      topic_image_url = #{topicImageUrl,jdbcType=VARCHAR},
+      like_sum = #{likeSum,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR}
+    where topic_id = #{topicId,jdbcType=INTEGER}
+  </update>
+</mapper>

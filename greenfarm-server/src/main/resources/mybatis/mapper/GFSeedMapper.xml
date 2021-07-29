@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callforcode.greenfarm.mapper.GFSeedMapper">
+  <resultMap id="BaseResultMap" type="com.callforcode.greenfarm.entity.GFSeed">
+    <id column="seed_id" jdbcType="INTEGER" property="seedId" />
+    <result column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="seed_name" jdbcType="VARCHAR" property="seedName" />
+    <result column="production" jdbcType="VARCHAR" property="production" />
+    <result column="lowest_planting" jdbcType="VARCHAR" property="lowestPlanting" />
+    <result column="seed_price" jdbcType="DECIMAL" property="seedPrice" />
+    <result column="fertilizer_name" jdbcType="VARCHAR" property="fertilizerName" />
+    <result column="fertilizer_price" jdbcType="DECIMAL" property="fertilizerPrice" />
+    <result column="fertilizer_amount" jdbcType="VARCHAR" property="fertilizerAmount" />
+    <result column="watering_quantity" jdbcType="VARCHAR" property="wateringQuantity" />
+    <result column="mature_period" jdbcType="INTEGER" property="maturePeriod" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.callforcode.greenfarm.entity.GFSeed">
+    <result column="seed_introduction" jdbcType="LONGVARCHAR" property="seedIntroduction" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    seed_id, product_id, seed_name, production, lowest_planting, seed_price, fertilizer_name, 
+    fertilizer_price, fertilizer_amount, watering_quantity, mature_period, create_time, 
+    modify_time, remark
+  </sql>
+  <sql id="Blob_Column_List">
+    seed_introduction
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from gf_seed
+    where seed_id = #{seedId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from gf_seed
+    where seed_id = #{seedId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="seed_id" keyProperty="seedId" parameterType="com.callforcode.greenfarm.entity.GFSeed" useGeneratedKeys="true">
+    insert into gf_seed (product_id, seed_name, production, 
+      lowest_planting, seed_price, fertilizer_name, 
+      fertilizer_price, fertilizer_amount, watering_quantity, 
+      mature_period, create_time, modify_time, 
+      remark, seed_introduction)
+    values (#{productId,jdbcType=INTEGER}, #{seedName,jdbcType=VARCHAR}, #{production,jdbcType=VARCHAR}, 
+      #{lowestPlanting,jdbcType=VARCHAR}, #{seedPrice,jdbcType=DECIMAL}, #{fertilizerName,jdbcType=VARCHAR}, 
+      #{fertilizerPrice,jdbcType=DECIMAL}, #{fertilizerAmount,jdbcType=VARCHAR}, #{wateringQuantity,jdbcType=VARCHAR}, 
+      #{maturePeriod,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR}, #{seedIntroduction,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="seed_id" keyProperty="seedId" parameterType="com.callforcode.greenfarm.entity.GFSeed" useGeneratedKeys="true">
+    insert into gf_seed
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="seedName != null">
+        seed_name,
+      </if>
+      <if test="production != null">
+        production,
+      </if>
+      <if test="lowestPlanting != null">
+        lowest_planting,
+      </if>
+      <if test="seedPrice != null">
+        seed_price,
+      </if>
+      <if test="fertilizerName != null">
+        fertilizer_name,
+      </if>
+      <if test="fertilizerPrice != null">
+        fertilizer_price,
+      </if>
+      <if test="fertilizerAmount != null">
+        fertilizer_amount,
+      </if>
+      <if test="wateringQuantity != null">
+        watering_quantity,
+      </if>
+      <if test="maturePeriod != null">
+        mature_period,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="seedIntroduction != null">
+        seed_introduction,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="seedName != null">
+        #{seedName,jdbcType=VARCHAR},
+      </if>
+      <if test="production != null">
+        #{production,jdbcType=VARCHAR},
+      </if>
+      <if test="lowestPlanting != null">
+        #{lowestPlanting,jdbcType=VARCHAR},
+      </if>
+      <if test="seedPrice != null">
+        #{seedPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="fertilizerName != null">
+        #{fertilizerName,jdbcType=VARCHAR},
+      </if>
+      <if test="fertilizerPrice != null">
+        #{fertilizerPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="fertilizerAmount != null">
+        #{fertilizerAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="wateringQuantity != null">
+        #{wateringQuantity,jdbcType=VARCHAR},
+      </if>
+      <if test="maturePeriod != null">
+        #{maturePeriod,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="seedIntroduction != null">
+        #{seedIntroduction,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.callforcode.greenfarm.entity.GFSeed">
+    update gf_seed
+    <set>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="seedName != null">
+        seed_name = #{seedName,jdbcType=VARCHAR},
+      </if>
+      <if test="production != null">
+        production = #{production,jdbcType=VARCHAR},
+      </if>
+      <if test="lowestPlanting != null">
+        lowest_planting = #{lowestPlanting,jdbcType=VARCHAR},
+      </if>
+      <if test="seedPrice != null">
+        seed_price = #{seedPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="fertilizerName != null">
+        fertilizer_name = #{fertilizerName,jdbcType=VARCHAR},
+      </if>
+      <if test="fertilizerPrice != null">
+        fertilizer_price = #{fertilizerPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="fertilizerAmount != null">
+        fertilizer_amount = #{fertilizerAmount,jdbcType=VARCHAR},
+      </if>
+      <if test="wateringQuantity != null">
+        watering_quantity = #{wateringQuantity,jdbcType=VARCHAR},
+      </if>
+      <if test="maturePeriod != null">
+        mature_period = #{maturePeriod,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="seedIntroduction != null">
+        seed_introduction = #{seedIntroduction,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where seed_id = #{seedId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.callforcode.greenfarm.entity.GFSeed">
+    update gf_seed
+    set product_id = #{productId,jdbcType=INTEGER},
+      seed_name = #{seedName,jdbcType=VARCHAR},
+      production = #{production,jdbcType=VARCHAR},
+      lowest_planting = #{lowestPlanting,jdbcType=VARCHAR},
+      seed_price = #{seedPrice,jdbcType=DECIMAL},
+      fertilizer_name = #{fertilizerName,jdbcType=VARCHAR},
+      fertilizer_price = #{fertilizerPrice,jdbcType=DECIMAL},
+      fertilizer_amount = #{fertilizerAmount,jdbcType=VARCHAR},
+      watering_quantity = #{wateringQuantity,jdbcType=VARCHAR},
+      mature_period = #{maturePeriod,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      seed_introduction = #{seedIntroduction,jdbcType=LONGVARCHAR}
+    where seed_id = #{seedId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.callforcode.greenfarm.entity.GFSeed">
+    update gf_seed
+    set product_id = #{productId,jdbcType=INTEGER},
+      seed_name = #{seedName,jdbcType=VARCHAR},
+      production = #{production,jdbcType=VARCHAR},
+      lowest_planting = #{lowestPlanting,jdbcType=VARCHAR},
+      seed_price = #{seedPrice,jdbcType=DECIMAL},
+      fertilizer_name = #{fertilizerName,jdbcType=VARCHAR},
+      fertilizer_price = #{fertilizerPrice,jdbcType=DECIMAL},
+      fertilizer_amount = #{fertilizerAmount,jdbcType=VARCHAR},
+      watering_quantity = #{wateringQuantity,jdbcType=VARCHAR},
+      mature_period = #{maturePeriod,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR}
+    where seed_id = #{seedId,jdbcType=INTEGER}
+  </update>
+</mapper>

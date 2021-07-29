@@ -1,0 +1,1 @@
+INSERT INTO gf_product (product_id,farm_id,land_id,username,product_name,category,introduction,weight,price,carbon_credit,number,sale_number,like_number,identifications,carbon_emission,donate_amount,create_time,modify_time,remark,image_url,vedio_url)VALUES (1000,1001, 1002,'MVCTEST','test','c','test','test',5,6,7, 8, 9,'test',4,3,now(),now(),'test','a.png,b.png','test');

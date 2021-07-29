@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.callforcode.greenfarm.mapper.GFOrderDetailMapper">
+	<select id="selectByWhere" parameterType="java.util.List"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from gf_order_detail
+		<where>
+			<if test="orderId != null">
+				AND order_id = #{orderId,jdbcType=INTEGER}
+			</if>
+			<if test="productId != null">
+				AND product_id = #{productId,jdbcType=INTEGER}
+			</if>
+			<if test="amount != null">
+				AND amount = #{amount,jdbcType=INTEGER}
+			</if>
+			<if test="createTime != null">
+				AND create_time = #{createTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="modifyTime != null">
+				AND modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="remark != null">
+				AND remark = #{remark,jdbcType=VARCHAR}
+			</if>
+		</where>
+		ORDER BY create_time DESC
+	</select>
+	<insert id="insertList" parameterType="java.util.List">
+		insert into gf_order_detail (
+		order_id, product_id, amount,
+		create_time,modify_time,remark)
+		<foreach collection="list" item="item" index="index"
+			separator="UNION ALL">
+			SELECT
+			#{item.orderId},#{item.productId},#{item.amount},#{item.createTime},#{item.modifyTime},#{item.remark}
+			FROM dual
+		</foreach>
+	</insert>
+	<select id="selectProductByIdList" parameterType="java.util.List" resultType="com.callforcode.greenfarm.entity.GFProduct">
+	   select number,sale_number saleNumber,product_id productId
+	   from gf_product 
+	   where product_id in 
+		<foreach collection="idProductList" item="item" open="(" close=")" index="index" separator=",">
+	      #{item.productId}
+	    </foreach>
+	</select>
+	<update id="updateProductByList" parameterType="java.util.List">
+	    <foreach collection="list" item="item" open="" close=""  index="index" separator=";">
+	            update gf_product set
+			number = #{item.number,jdbcType=INTEGER},
+			sale_number = #{item.saleNumber,jdbcType=INTEGER},
+	        modify_time=#{item.modifyTime,jdbcType=TIMESTAMP}
+	        where product_id =#{item.productId,jdbcType=INTEGER}
+	        </foreach>
+		</update>
+</mapper>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callforcode.greenfarm.mapper.GFTaskStepMapper">
+  <resultMap id="BaseResultMap" type="com.callforcode.greenfarm.entity.GFTaskStep">
+    <id column="step_id" jdbcType="INTEGER" property="stepId" />
+    <result column="task_id" jdbcType="INTEGER" property="taskId" />
+    <result column="carbon_credit" jdbcType="INTEGER" property="carbonCredit" />
+    <result column="plant_no" jdbcType="INTEGER" property="plantNo" />
+    <result column="plant_step" jdbcType="VARCHAR" property="plantStep" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="begin_time" jdbcType="DATE" property="beginTime" />
+    <result column="end_time" jdbcType="DATE" property="endTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    step_id, task_id, carbon_credit, plant_no, plant_step, status, begin_time, end_time, 
+    remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gf_task_step
+    where step_id = #{stepId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from gf_task_step
+    where step_id = #{stepId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="step_id" keyProperty="stepId" parameterType="com.callforcode.greenfarm.entity.GFTaskStep" useGeneratedKeys="true">
+    insert into gf_task_step (task_id, carbon_credit, plant_no, 
+      plant_step, status, begin_time, 
+      end_time, remark)
+    values (#{taskId,jdbcType=INTEGER}, #{carbonCredit,jdbcType=INTEGER}, #{plantNo,jdbcType=INTEGER}, 
+      #{plantStep,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{beginTime,jdbcType=DATE}, 
+      #{endTime,jdbcType=DATE}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="step_id" keyProperty="stepId" parameterType="com.callforcode.greenfarm.entity.GFTaskStep" useGeneratedKeys="true">
+    insert into gf_task_step
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="taskId != null">
+        task_id,
+      </if>
+      <if test="carbonCredit != null">
+        carbon_credit,
+      </if>
+      <if test="plantNo != null">
+        plant_no,
+      </if>
+      <if test="plantStep != null">
+        plant_step,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="beginTime != null">
+        begin_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="taskId != null">
+        #{taskId,jdbcType=INTEGER},
+      </if>
+      <if test="carbonCredit != null">
+        #{carbonCredit,jdbcType=INTEGER},
+      </if>
+      <if test="plantNo != null">
+        #{plantNo,jdbcType=INTEGER},
+      </if>
+      <if test="plantStep != null">
+        #{plantStep,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="beginTime != null">
+        #{beginTime,jdbcType=DATE},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=DATE},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.callforcode.greenfarm.entity.GFTaskStep">
+    update gf_task_step
+    <set>
+      <if test="taskId != null">
+        task_id = #{taskId,jdbcType=INTEGER},
+      </if>
+      <if test="carbonCredit != null">
+        carbon_credit = #{carbonCredit,jdbcType=INTEGER},
+      </if>
+      <if test="plantNo != null">
+        plant_no = #{plantNo,jdbcType=INTEGER},
+      </if>
+      <if test="plantStep != null">
+        plant_step = #{plantStep,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="beginTime != null">
+        begin_time = #{beginTime,jdbcType=DATE},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=DATE},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where step_id = #{stepId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.callforcode.greenfarm.entity.GFTaskStep">
+    update gf_task_step
+    set task_id = #{taskId,jdbcType=INTEGER},
+      carbon_credit = #{carbonCredit,jdbcType=INTEGER},
+      plant_no = #{plantNo,jdbcType=INTEGER},
+      plant_step = #{plantStep,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      begin_time = #{beginTime,jdbcType=DATE},
+      end_time = #{endTime,jdbcType=DATE},
+      remark = #{remark,jdbcType=VARCHAR}
+    where step_id = #{stepId,jdbcType=INTEGER}
+  </update>
+</mapper>

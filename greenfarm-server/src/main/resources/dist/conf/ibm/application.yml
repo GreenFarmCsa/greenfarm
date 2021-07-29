@@ -1,0 +1,83 @@
+#spring server
+server:
+  port: 8081
+  compression:
+    enabled: true
+    min-response-size: 1024
+    mime-types:
+      - image/png
+      - image/jpeg
+      - image/jpg
+      - text/html
+      - text/css
+      - application/javascript
+      - application/octet-stream
+      - application/json
+      - font/woff2
+      - font/otf
+#jmx
+spring:
+  jmx:
+    enabled: false
+#log
+logging:
+  level:
+    root: info
+
+# actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: /
+    health:
+      probes:
+        enabled: true
+
+#swagger
+swagger:
+  enabled: true
+
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/**/*Mapper.xml
+
+green-farm:
+  datasource:
+    jdbcUrl: jdbc:mysql://localhost:3306/green_farm?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC&allowMultiQueries=true
+    username: root
+    password: root
+    maxmum-pool-size: 10
+    minnum-idle: 3
+  ai:
+    url: http://localhost:5000
+  file:
+    upload-path: /root/green-farm/files
+    live-path: /root/green-farm/live
+    move-path: /root/bak
+  ibm:
+    objectstorage:
+      enable: false
+    blockchain:
+      enable: true
+  session:
+    authentication:
+      enable: true
+
+fabric:
+  name: Admin
+  mspId: Org1MSP
+  keyPath: cert/priv_sk
+  certPath: cert/Admin@org1.example.com-cert.pem
+  channelName: mychannel
+  peers:
+    - name: p1o1
+      url: grpcs://peer0.org1.example.com:7051
+      pemPath: cert/tlsca.org1.example.com-cert.pem
+    - name: p2o1
+      url: grpcs://peer1.org1.example.com:8051
+      pemPath: cert/tlsca.org1.example.com-cert.pem
+  orderers:
+    - name: order
+      url: grpcs://orderer.example.com:7050
+      pemPath: cert/tlsca.example.com-cert.pem

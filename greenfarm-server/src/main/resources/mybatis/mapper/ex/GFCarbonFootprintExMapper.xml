@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callforcode.greenfarm.mapper.GFCarbonFootprintMapper">
+
+  <resultMap id="CountResultMap" type="com.callforcode.greenfarm.vo.CarbonCredit">
+    <result column="d" jdbcType="VARCHAR" property="date" />
+    <result column="v" jdbcType="INTEGER" property="value" />
+  </resultMap>
+
+  <select id="selectByUserName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gf_carbon_footprint
+    where username = #{userName,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectTargetFootprint" parameterType="java.lang.String" resultMap="CountResultMap">
+    select date_format(create_time, '%Y-%m-%d') as d ,sum(carbon_credit) as v from gf_carbon_footprint
+    where username = #{userName,jdbcType=VARCHAR} group by date_format(create_time, '%Y-%m-%d')
+  </select>
+
+</mapper>

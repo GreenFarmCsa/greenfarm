@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callforcode.greenfarm.mapper.GFCarbonCreditDailyMapper">
+    <resultMap id="CountResultMap" type="com.callforcode.greenfarm.vo.CarbonCredit">
+        <result column="carbon_credit" jdbcType="INTEGER" property="value" />
+        <result column="carbon_date" jdbcType="DATE" property="date" />
+    </resultMap>
+    <select id="selectByUserNameAndDate" parameterType="com.callforcode.greenfarm.entity.GFCarbonCreditDaily" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from gf_carbon_credit_daily
+        where username = #{username,jdbcType=VARCHAR} and carbon_date = #{carbonDate,jdbcType=DATE} and type=#{type,jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectByUserNameAndType" parameterType="com.callforcode.greenfarm.entity.GFCarbonCreditDaily" resultMap="CountResultMap">
+        select
+        carbon_credit, carbon_date
+        from gf_carbon_credit_daily
+        where username = #{username,jdbcType=VARCHAR}
+        <if test="type != null and type != ''">
+            and type = #{type,jdbcType=VARCHAR}
+        </if>
+        order by carbon_date asc
+    </select>
+
+</mapper>

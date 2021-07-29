@@ -1,0 +1,1 @@
+ DELETE FROM gf_user WHERE username ='TEST-TESTA';

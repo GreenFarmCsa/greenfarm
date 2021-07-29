@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callforcode.greenfarm.mapper.GFCommunityMapper">
+  <resultMap id="BaseResultMap" type="com.callforcode.greenfarm.entity.GFCommunity">
+    <id column="community_id" jdbcType="INTEGER" property="communityId" />
+    <result column="farm_id" jdbcType="INTEGER" property="farmId" />
+    <result column="community_name" jdbcType="VARCHAR" property="communityName" />
+    <result column="introduction" jdbcType="VARCHAR" property="introduction" />
+    <result column="community_image_url" jdbcType="VARCHAR" property="communityImageUrl" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    community_id, farm_id, community_name, introduction, community_image_url, create_time, 
+    modify_time, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gf_community
+    where community_id = #{communityId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from gf_community
+    where community_id = #{communityId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="community_id" keyProperty="communityId" parameterType="com.callforcode.greenfarm.entity.GFCommunity" useGeneratedKeys="true">
+    insert into gf_community (farm_id, community_name, introduction, 
+      community_image_url, create_time, modify_time, 
+      remark)
+    values (#{farmId,jdbcType=INTEGER}, #{communityName,jdbcType=VARCHAR}, #{introduction,jdbcType=VARCHAR}, 
+      #{communityImageUrl,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="community_id" keyProperty="communityId" parameterType="com.callforcode.greenfarm.entity.GFCommunity" useGeneratedKeys="true">
+    insert into gf_community
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="farmId != null">
+        farm_id,
+      </if>
+      <if test="communityName != null">
+        community_name,
+      </if>
+      <if test="introduction != null">
+        introduction,
+      </if>
+      <if test="communityImageUrl != null">
+        community_image_url,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="farmId != null">
+        #{farmId,jdbcType=INTEGER},
+      </if>
+      <if test="communityName != null">
+        #{communityName,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null">
+        #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="communityImageUrl != null">
+        #{communityImageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.callforcode.greenfarm.entity.GFCommunity">
+    update gf_community
+    <set>
+      <if test="farmId != null">
+        farm_id = #{farmId,jdbcType=INTEGER},
+      </if>
+      <if test="communityName != null">
+        community_name = #{communityName,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null">
+        introduction = #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="communityImageUrl != null">
+        community_image_url = #{communityImageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where community_id = #{communityId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.callforcode.greenfarm.entity.GFCommunity">
+    update gf_community
+    set farm_id = #{farmId,jdbcType=INTEGER},
+      community_name = #{communityName,jdbcType=VARCHAR},
+      introduction = #{introduction,jdbcType=VARCHAR},
+      community_image_url = #{communityImageUrl,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR}
+    where community_id = #{communityId,jdbcType=INTEGER}
+  </update>
+</mapper>

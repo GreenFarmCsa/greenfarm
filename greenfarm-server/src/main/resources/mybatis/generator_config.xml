@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <classPathEntry location="C:\maven\repository\mysql\mysql-connector-java\8.0.22\mysql-connector-java-8.0.22.jar"/>
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/green_farm?Unicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=UTC"
+                        userId="root" password="root"/>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <javaModelGenerator targetPackage="com.callforcode.greenfarm.entity" targetProject="src/main/java">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources/mybatis">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.callforcode.greenfarm.mapper" targetProject="src/main/java">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+
+         <!--<table tableName="gf_order_detail" domainObjectName="GFOrderDetail"  catalog="green_farm"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+             <property name="ignoreQualifiersAtRuntime" value="true"/>
+             <generatedKey column="detail_id" sqlStatement="JDBC" />
+        </table>
+        <table tableName="gf_task_step" domainObjectName="GFTaskStep"  catalog="green_farm"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+             <property name="ignoreQualifiersAtRuntime" value="true"/>
+             <generatedKey column="step_id" sqlStatement="JDBC" />
+        </table>
+        <table tableName="gf_step_template" domainObjectName="GFStepTemplate"  catalog="green_farm"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="template_id" sqlStatement="JDBC" />
+        </table>
+         <table tableName="gf_live" domainObjectName="GFLive"  catalog="green_farm"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+             <property name="ignoreQualifiersAtRuntime" value="true"/>
+             <generatedKey column="live_id" sqlStatement="JDBC" />
+        </table>
+        <table tableName="gf_product_comment" domainObjectName="GFProductComment"  catalog="green_farm"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="comment_id" sqlStatement="JDBC" />
+        </table>  -->
+        <!--  <table tableName="gf_farm" domainObjectName="GFFarm"  catalog="green_farm"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="farm_id" sqlStatement="JDBC" /> 
+        </table> -->
+        <!--  <table tableName="gf_seed" domainObjectName="GFSeed"  catalog="green_farm"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="seed_id" sqlStatement="JDBC" />
+        </table>
+        <table tableName="gf_land" domainObjectName="GFLand"  catalog="green_farm"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="land_id" sqlStatement="JDBC" />
+        </table>
+        <table tableName="gf_rent" domainObjectName="GFRent"  catalog="green_farm"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="rent_id" sqlStatement="JDBC" />
+        </table>
+        <table tableName="gf_product" domainObjectName="GFProduct"  catalog="green_farm"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="product_id" sqlStatement="JDBC" />
+        </table>
+        <table tableName="gf_plant_task" domainObjectName="GFPlantTask"  catalog="green_farm"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="task_id" sqlStatement="JDBC" />
+        </table>
+        <table tableName="gf_task_detail" domainObjectName="GFTaskDetail"  catalog="green_farm"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="detail_id" sqlStatement="JDBC" />
+        </table>
+        <table tableName="gf_order" domainObjectName="GFOrder"  catalog="green_farm"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="order_id" sqlStatement="JDBC" />
+        </table>
+        <table tableName="gf_shopping_cart" domainObjectName="GFShoppingCart"  catalog="green_farm"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="cart_id" sqlStatement="JDBC" />
+        </table>
+        <table tableName="gf_carbon_footprint" domainObjectName="GFCarbonFootprint"  catalog="green_farm"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+             <property name="ignoreQualifiersAtRuntime" value="true"/>
+             <generatedKey column="footprint_id" sqlStatement="JDBC" />
+        </table>
+
+        <table tableName="gf_community" domainObjectName="GFCommunity"  catalog="test"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="community_id" sqlStatement="JDBC" />
+        </table>
+        <table tableName="gf_community_member" domainObjectName="GFCommunityMember"  catalog="test"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>
+        <table tableName="gf_topic" domainObjectName="GFTopic"  catalog="test"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="topic_id" sqlStatement="JDBC" />
+        </table>
+        <table tableName="gf_comment" domainObjectName="GFComment"  catalog="test"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="comment_id" sqlStatement="JDBC" />
+        </table>
+        <table tableName="gf_user" domainObjectName="GFUser"  catalog="test"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>
+        <table tableName="gf_finance_product" domainObjectName="GFFinanceProduct"  catalog="test"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="finance_product_id" sqlStatement="JDBC" />
+        </table>
+        <table tableName="gf_user_finance" domainObjectName="GFUserFinance"  catalog="test"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>  -->
+
+
+
+<!--        <table tableName="gf_rent" domainObjectName="GFRent"  catalog="green_farm"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="rent_id" sqlStatement="JDBC" />
+        </table>-->
+<!--        <table tableName="gf_product" domainObjectName="GFProduct"  catalog="green_farm"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="product_id" sqlStatement="JDBC" />
+        </table>-->
+
+<!--        <table tableName="gf_order" domainObjectName="GFOrder"  catalog="green_farm"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="order_id" sqlStatement="JDBC" />
+        </table>
+        <table tableName="gf_carbon_footprint" domainObjectName="GFCarbonFootprint"  catalog="green_farm"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="footprint_id" sqlStatement="JDBC" />
+        </table>-->
+
+<!--        <table tableName="gf_task_detail" domainObjectName="GFTaskDetail"  catalog="green_farm"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="detail_id" sqlStatement="JDBC" />
+        </table>-->
+
+<!--        <table tableName="gf_plant_task" domainObjectName="GFPlantTask"  catalog="green_farm"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="task_id" sqlStatement="JDBC" />
+        </table>-->
+
+<!--        <table tableName="gf_step_template" domainObjectName="GFStepTemplate"  catalog="green_farm"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="template_id" sqlStatement="JDBC" />
+        </table>-->
+
+<!--        <table tableName="gf_land" domainObjectName="GFLand"  catalog="green_farm"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="land_id" sqlStatement="JDBC" />
+        </table>-->
+
+        <!--<table tableName="gf_carbon_credit_daily" domainObjectName="GFCarbonCreditDaily"  catalog="green_farm"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="credit_daily_id" sqlStatement="JDBC" />
+        </table> -->
+
+<!--        <table tableName="gf_live" domainObjectName="GFLive"  catalog="green_farm"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="live_id" sqlStatement="JDBC" />
+        </table>-->
+<!--        <table tableName="gf_live_video_bat" domainObjectName="GFLiveVideoBat"  catalog="green_farm"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+        </table>-->
+
+<!--
+                <table tableName="gf_seed" domainObjectName="GFSeed"  catalog="green_farm"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="seed_id" sqlStatement="JDBC" />
+        </table>-->
+
+<!--                <table tableName="gf_plant_task" domainObjectName="GFPlantTask"  catalog="green_farm"  enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="ignoreQualifiersAtRuntime" value="true"/>
+            <generatedKey column="task_id" sqlStatement="JDBC" />
+        </table>-->
+
+    </context>
+</generatorConfiguration>

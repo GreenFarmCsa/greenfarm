@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callforcode.greenfarm.mapper.GFTopicMapper">
+
+    <resultMap id="LikeResultMap" type="com.callforcode.greenfarm.vo.GFTopicVo">
+        <id column="topic_id" jdbcType="INTEGER" property="topicId" />
+        <result column="community_id" jdbcType="INTEGER" property="communityId" />
+        <result column="username" jdbcType="VARCHAR" property="username" />
+        <result column="topic_name" jdbcType="VARCHAR" property="topicName" />
+        <result column="topic_content" jdbcType="VARCHAR" property="topicContent" />
+        <result column="topic_image_url" jdbcType="VARCHAR" property="topicImageUrl" />
+        <result column="like_sum" jdbcType="INTEGER" property="likeSum" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+        <result column="remark" jdbcType="VARCHAR" property="remark" />
+        <result column="hasLiked" javaType="BOOLEAN" property="hasLiked" />
+    </resultMap>
+
+ <select id="selectByUsername" parameterType="string" resultMap="BaseResultMap">
+   select
+   <include refid="Base_Column_List"/>
+     from gf_topic gt
+     where exists(
+     select 1 from gf_community_member gcm
+     where gcm.community_id =gt.community_id
+     and gcm.username = #{userName,jdbcType=VARCHAR}
+     )
+     order  by gt.like_sum desc,gt.create_time desc
+
+ </select>
+
+ <select id="queryTopicsWithLikeByUsername" parameterType="string" resultMap="LikeResultMap">
+     select gt.topic_id, gt.community_id, gt.username, gt.topic_name, gt.topic_content, gt.topic_image_url, gt.like_sum, gt.create_time, gt.modify_time, gt.remark, if(lk.topic_id = gt.topic_id, true, false) as hasLiked
+        from gf_topic gt
+                 left join gf_like lk on lk.username = #{userName,jdbcType=VARCHAR} and lk.topic_id = gt.topic_id
+        where exists(select 1
+                     from gf_community_member gcm
+                     where gcm.community_id = gt.community_id
+                       and gcm.username = #{userName,jdbcType=VARCHAR})
+        order by gt.like_sum desc, gt.create_time desc
+ </select>
+
+ <select id="selectByCommunityId" parameterType="integer" resultMap="BaseResultMap">
+
+     select
+     <include refid="Base_Column_List"/>
+     from gf_topic
+     where community_id = #{communityId,jdbcType=INTEGER}
+
+ </select>
+
+ <select id="selectWithLikeByCommunityIdAndUserName" resultMap="LikeResultMap">
+
+    select gt.topic_id, gt.community_id, gt.username, gt.topic_name, gt.topic_content, gt.topic_image_url, gt.like_sum, gt.create_time, gt.modify_time, gt.remark, if(lk.topic_id = gt.topic_id, true, false) as hasLiked
+    from gf_topic gt
+         left join gf_like lk on lk.username = #{userName,jdbcType=VARCHAR} and lk.topic_id = gt.topic_id
+    where gt.community_id = #{communityId,jdbcType=INTEGER}
+
+    </select>
+
+ <select id="selectByWhere"   resultMap="BaseResultMap">
+     select
+     <include refid="Base_Column_List" />
+
+     from gf_topic
+     <where>
+         <if test="topicId != null">
+             AND  topic_id = #{topicId,jdbcType=INTEGER}
+         </if>
+         <if test="communityId!= null">
+             AND  community_id=#{communityId,jdbcType=INTEGER}
+         </if>
+         <if test="username!= null">
+             AND  username = #{username,jdbcType=VARCHAR}
+         </if>
+         <if test="topicName != null">
+             AND  UPPER(topic_name) like UPPER(CONCAT('%',#{topicName,jdbcType=VARCHAR},'%'))
+         </if>
+
+         <if test="topicContent != null">
+             AND  UPPER(topic_content) like UPPER(CONCAT('%',#{topicContent,jdbcType=VARCHAR},'%'))
+         </if>
+         <if test="likeSum != null">
+             AND  like_sum = #{likeSum,jdbcType=INTEGER}
+         </if>
+         <if test="createTime != null">
+             AND  create_time = #{createTime,jdbcType=TIMESTAMP}
+         </if>
+         <if test="modifyTime != null">
+             AND  modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+         </if>
+         <if test="remark != null">
+             AND  UPPER(remark) like UPPER(CONCAT('%',#{remark,jdbcType=VARCHAR},'%'))
+         </if>
+
+     </where>
+     ORDER BY create_time DESC
+
+
+ </select>
+
+<select id="getCommentsCountByTopicId" parameterType="integer" resultType="integer">
+      select count(comment_id)
+        from gf_comment where  topic_id =#{topicId,jdbcType=INTEGER}
+</select>
+
+</mapper>

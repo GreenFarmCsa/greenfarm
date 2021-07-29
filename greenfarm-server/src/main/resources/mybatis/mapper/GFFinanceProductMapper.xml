@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callforcode.greenfarm.mapper.GFFinanceProductMapper">
+  <resultMap id="BaseResultMap" type="com.callforcode.greenfarm.entity.GFFinanceProduct">
+    <id column="finance_product_id" jdbcType="INTEGER" property="financeProductId" />
+    <result column="finance_product_name" jdbcType="VARCHAR" property="financeProductName" />
+    <result column="finance_product_no" jdbcType="VARCHAR" property="financeProductNo" />
+    <result column="finance_product_desc" jdbcType="VARCHAR" property="financeProductDesc" />
+    <result column="org_name" jdbcType="VARCHAR" property="orgName" />
+    <result column="finance_product_category" jdbcType="VARCHAR" property="financeProductCategory" />
+    <result column="finance_limit" jdbcType="VARCHAR" property="financeLimit" />
+    <result column="valid_period" jdbcType="VARCHAR" property="validPeriod" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    finance_product_id, finance_product_name, finance_product_no, finance_product_desc, 
+    org_name, finance_product_category, finance_limit, valid_period, create_time, modify_time, 
+    remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gf_finance_product
+    where finance_product_id = #{financeProductId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from gf_finance_product
+    where finance_product_id = #{financeProductId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="finance_product_id" keyProperty="financeProductId" parameterType="com.callforcode.greenfarm.entity.GFFinanceProduct" useGeneratedKeys="true">
+    insert into gf_finance_product (finance_product_name, finance_product_no, 
+      finance_product_desc, org_name, finance_product_category, 
+      finance_limit, valid_period, create_time, 
+      modify_time, remark)
+    values (#{financeProductName,jdbcType=VARCHAR}, #{financeProductNo,jdbcType=VARCHAR}, 
+      #{financeProductDesc,jdbcType=VARCHAR}, #{orgName,jdbcType=VARCHAR}, #{financeProductCategory,jdbcType=VARCHAR}, 
+      #{financeLimit,jdbcType=VARCHAR}, #{validPeriod,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="finance_product_id" keyProperty="financeProductId" parameterType="com.callforcode.greenfarm.entity.GFFinanceProduct" useGeneratedKeys="true">
+    insert into gf_finance_product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="financeProductName != null">
+        finance_product_name,
+      </if>
+      <if test="financeProductNo != null">
+        finance_product_no,
+      </if>
+      <if test="financeProductDesc != null">
+        finance_product_desc,
+      </if>
+      <if test="orgName != null">
+        org_name,
+      </if>
+      <if test="financeProductCategory != null">
+        finance_product_category,
+      </if>
+      <if test="financeLimit != null">
+        finance_limit,
+      </if>
+      <if test="validPeriod != null">
+        valid_period,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="financeProductName != null">
+        #{financeProductName,jdbcType=VARCHAR},
+      </if>
+      <if test="financeProductNo != null">
+        #{financeProductNo,jdbcType=VARCHAR},
+      </if>
+      <if test="financeProductDesc != null">
+        #{financeProductDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null">
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="financeProductCategory != null">
+        #{financeProductCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="financeLimit != null">
+        #{financeLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="validPeriod != null">
+        #{validPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.callforcode.greenfarm.entity.GFFinanceProduct">
+    update gf_finance_product
+    <set>
+      <if test="financeProductName != null">
+        finance_product_name = #{financeProductName,jdbcType=VARCHAR},
+      </if>
+      <if test="financeProductNo != null">
+        finance_product_no = #{financeProductNo,jdbcType=VARCHAR},
+      </if>
+      <if test="financeProductDesc != null">
+        finance_product_desc = #{financeProductDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null">
+        org_name = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="financeProductCategory != null">
+        finance_product_category = #{financeProductCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="financeLimit != null">
+        finance_limit = #{financeLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="validPeriod != null">
+        valid_period = #{validPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where finance_product_id = #{financeProductId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.callforcode.greenfarm.entity.GFFinanceProduct">
+    update gf_finance_product
+    set finance_product_name = #{financeProductName,jdbcType=VARCHAR},
+      finance_product_no = #{financeProductNo,jdbcType=VARCHAR},
+      finance_product_desc = #{financeProductDesc,jdbcType=VARCHAR},
+      org_name = #{orgName,jdbcType=VARCHAR},
+      finance_product_category = #{financeProductCategory,jdbcType=VARCHAR},
+      finance_limit = #{financeLimit,jdbcType=VARCHAR},
+      valid_period = #{validPeriod,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR}
+    where finance_product_id = #{financeProductId,jdbcType=INTEGER}
+  </update>
+</mapper>

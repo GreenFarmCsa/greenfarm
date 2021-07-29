@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callforcode.greenfarm.mapper.GFStepTemplateMapper">
+  <resultMap id="BaseResultMap" type="com.callforcode.greenfarm.entity.GFStepTemplate">
+    <id column="template_id" jdbcType="INTEGER" property="templateId" />
+    <result column="seed_id" jdbcType="INTEGER" property="seedId" />
+    <result column="carbon_credit" jdbcType="INTEGER" property="carbonCredit" />
+    <result column="plant_no" jdbcType="INTEGER" property="plantNo" />
+    <result column="plant_step" jdbcType="VARCHAR" property="plantStep" />
+    <result column="begin_time" jdbcType="DATE" property="beginTime" />
+    <result column="end_time" jdbcType="DATE" property="endTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.callforcode.greenfarm.entity.GFStepTemplate">
+    <result column="vedio_url" jdbcType="LONGVARCHAR" property="vedioUrl" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    template_id, seed_id, carbon_credit, plant_no, plant_step, begin_time, end_time, 
+    remark
+  </sql>
+  <sql id="Blob_Column_List">
+    vedio_url
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from gf_step_template
+    where template_id = #{templateId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from gf_step_template
+    where template_id = #{templateId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="template_id" keyProperty="templateId" parameterType="com.callforcode.greenfarm.entity.GFStepTemplate" useGeneratedKeys="true">
+    insert into gf_step_template (seed_id, carbon_credit, plant_no, 
+      plant_step, begin_time, end_time, 
+      remark, vedio_url)
+    values (#{seedId,jdbcType=INTEGER}, #{carbonCredit,jdbcType=INTEGER}, #{plantNo,jdbcType=INTEGER}, 
+      #{plantStep,jdbcType=VARCHAR}, #{beginTime,jdbcType=DATE}, #{endTime,jdbcType=DATE}, 
+      #{remark,jdbcType=VARCHAR}, #{vedioUrl,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="template_id" keyProperty="templateId" parameterType="com.callforcode.greenfarm.entity.GFStepTemplate" useGeneratedKeys="true">
+    insert into gf_step_template
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="seedId != null">
+        seed_id,
+      </if>
+      <if test="carbonCredit != null">
+        carbon_credit,
+      </if>
+      <if test="plantNo != null">
+        plant_no,
+      </if>
+      <if test="plantStep != null">
+        plant_step,
+      </if>
+      <if test="beginTime != null">
+        begin_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="vedioUrl != null">
+        vedio_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="seedId != null">
+        #{seedId,jdbcType=INTEGER},
+      </if>
+      <if test="carbonCredit != null">
+        #{carbonCredit,jdbcType=INTEGER},
+      </if>
+      <if test="plantNo != null">
+        #{plantNo,jdbcType=INTEGER},
+      </if>
+      <if test="plantStep != null">
+        #{plantStep,jdbcType=VARCHAR},
+      </if>
+      <if test="beginTime != null">
+        #{beginTime,jdbcType=DATE},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=DATE},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="vedioUrl != null">
+        #{vedioUrl,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.callforcode.greenfarm.entity.GFStepTemplate">
+    update gf_step_template
+    <set>
+      <if test="seedId != null">
+        seed_id = #{seedId,jdbcType=INTEGER},
+      </if>
+      <if test="carbonCredit != null">
+        carbon_credit = #{carbonCredit,jdbcType=INTEGER},
+      </if>
+      <if test="plantNo != null">
+        plant_no = #{plantNo,jdbcType=INTEGER},
+      </if>
+      <if test="plantStep != null">
+        plant_step = #{plantStep,jdbcType=VARCHAR},
+      </if>
+      <if test="beginTime != null">
+        begin_time = #{beginTime,jdbcType=DATE},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=DATE},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="vedioUrl != null">
+        vedio_url = #{vedioUrl,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where template_id = #{templateId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.callforcode.greenfarm.entity.GFStepTemplate">
+    update gf_step_template
+    set seed_id = #{seedId,jdbcType=INTEGER},
+      carbon_credit = #{carbonCredit,jdbcType=INTEGER},
+      plant_no = #{plantNo,jdbcType=INTEGER},
+      plant_step = #{plantStep,jdbcType=VARCHAR},
+      begin_time = #{beginTime,jdbcType=DATE},
+      end_time = #{endTime,jdbcType=DATE},
+      remark = #{remark,jdbcType=VARCHAR},
+      vedio_url = #{vedioUrl,jdbcType=LONGVARCHAR}
+    where template_id = #{templateId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.callforcode.greenfarm.entity.GFStepTemplate">
+    update gf_step_template
+    set seed_id = #{seedId,jdbcType=INTEGER},
+      carbon_credit = #{carbonCredit,jdbcType=INTEGER},
+      plant_no = #{plantNo,jdbcType=INTEGER},
+      plant_step = #{plantStep,jdbcType=VARCHAR},
+      begin_time = #{beginTime,jdbcType=DATE},
+      end_time = #{endTime,jdbcType=DATE},
+      remark = #{remark,jdbcType=VARCHAR}
+    where template_id = #{templateId,jdbcType=INTEGER}
+  </update>
+</mapper>

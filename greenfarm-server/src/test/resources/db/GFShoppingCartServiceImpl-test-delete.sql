@@ -1,0 +1,1 @@
+ DELETE FROM gf_shopping_cart WHERE cart_id = 1233;

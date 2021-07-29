@@ -1,0 +1,2 @@
+INSERT INTO gf_order(order_id,username, address, money,  carbon_credit, create_time, modify_time,  remark)  VALUES (8999,'TEST-TESTA','test', 100, 50, now(), now(), 'test');
+INSERT INTO gf_order_detail(detail_id,order_id, product_id, amount,  create_time, modify_time, remark ) VALUES (9999,8999, 1000, 2, now(),now(),'test' );

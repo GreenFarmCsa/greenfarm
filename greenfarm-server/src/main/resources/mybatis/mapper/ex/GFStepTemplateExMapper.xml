@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callforcode.greenfarm.mapper.GFStepTemplateMapper">
+ <select id="queryStepTemplateBySeedId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gf_step_template
+    where seed_id = #{seedId,jdbcType=INTEGER} order by plant_no ASC
+ </select>
+ <select id="queryStepTemplateByStepId" parameterType="integer" resultMap="ResultMapWithBLOBs">
+  select
+  <include refid="Blob_Column_List"/>
+   from  gf_step_template gst where exists (
+      select 1 from (
+      select seed_id,plant_no from gf_plant_task gpt
+     inner join gf_task_step gts  on gts.task_id =gpt.task_id
+     and  gts.step_id =#{stepId,jdbcType=INTEGER}
+      ) temp where temp.seed_id=gst.seed_id and temp.plant_no=gst.plant_no)
+ </select>
+
+</mapper>

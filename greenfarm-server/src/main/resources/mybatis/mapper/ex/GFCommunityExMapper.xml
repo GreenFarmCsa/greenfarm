@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callforcode.greenfarm.mapper.GFCommunityMapper">
+<select id="selectByFarmId" parameterType="integer" resultMap="BaseResultMap">
+
+    select
+     <include refid="Base_Column_List"/>
+    from gf_community
+    where farm_id = #{farmId,jdbcType=INTEGER}
+
+
+</select>
+<select id="selectByCommunityName" parameterType="string" resultMap="BaseResultMap">
+
+    select
+     <include refid="Base_Column_List"/>
+    from gf_community
+    where community_name = #{communityName,jdbcType=VARCHAR}
+
+</select>
+
+    <select id="selectByUsername" parameterType="string" resultMap="BaseResultMap">
+
+        select
+          community.community_id as community_id,
+          farm_id,
+          community_name,
+          introduction,
+          community_image_url,
+          community.create_time as create_time,
+          community.modify_time as modify_time,
+          community.remark as remark
+        from
+        gf_community community inner join
+        gf_community_member memb on community.community_id=memb.community_id and memb.username=#{username,jdbcType=VARCHAR}
+
+
+    </select>
+
+
+    <insert id="insertCommunityMember" >
+
+
+    </insert>
+
+</mapper>

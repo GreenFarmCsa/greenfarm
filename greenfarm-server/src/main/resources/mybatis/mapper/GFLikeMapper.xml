@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callforcode.greenfarm.mapper.GFLikeMapper">
+  <resultMap id="BaseResultMap" type="com.callforcode.greenfarm.entity.GFLike">
+    <id column="like_id" jdbcType="INTEGER" property="likeId" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="topic_id" jdbcType="INTEGER" property="topicId" />
+    <result column="product_id" jdbcType="INTEGER" property="productId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    like_id, username, topic_id, product_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gf_like
+    where like_id = #{likeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from gf_like
+    where like_id = #{likeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="like_id" keyProperty="likeId" parameterType="com.callforcode.greenfarm.entity.GFLike" useGeneratedKeys="true">
+    insert into gf_like (username, topic_id, product_id
+      )
+    values (#{username,jdbcType=VARCHAR}, #{topicId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="like_id" keyProperty="likeId" parameterType="com.callforcode.greenfarm.entity.GFLike" useGeneratedKeys="true">
+    insert into gf_like
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        username,
+      </if>
+      <if test="topicId != null">
+        topic_id,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="topicId != null">
+        #{topicId,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.callforcode.greenfarm.entity.GFLike">
+    update gf_like
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="topicId != null">
+        topic_id = #{topicId,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where like_id = #{likeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.callforcode.greenfarm.entity.GFLike">
+    update gf_like
+    set username = #{username,jdbcType=VARCHAR},
+      topic_id = #{topicId,jdbcType=INTEGER},
+      product_id = #{productId,jdbcType=INTEGER}
+    where like_id = #{likeId,jdbcType=INTEGER}
+  </update>
+</mapper>

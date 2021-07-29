@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callforcode.greenfarm.mapper.GFFarmMapper">
+  <resultMap id="BaseResultMap" type="com.callforcode.greenfarm.entity.GFFarm">
+    <id column="farm_id" jdbcType="INTEGER" property="farmId" />
+    <result column="farm_name" jdbcType="VARCHAR" property="farmName" />
+    <result column="introduction" jdbcType="VARCHAR" property="introduction" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="total_area" jdbcType="INTEGER" property="totalArea" />
+    <result column="idle_area" jdbcType="INTEGER" property="idleArea" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+    <result column="icon_url" jdbcType="VARCHAR" property="iconUrl" />
+    <result column="rent_period" jdbcType="VARCHAR" property="rentPeriod" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="suited_crops" jdbcType="VARCHAR" property="suitedCrops" />
+    <result column="latitude_longitude" jdbcType="VARCHAR" property="latitudeLongitude" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.callforcode.greenfarm.entity.GFFarmWithBLOBs">
+    <result column="image_url" jdbcType="LONGVARCHAR" property="imageUrl" />
+    <result column="vr_url" jdbcType="LONGVARCHAR" property="vrUrl" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    farm_id, farm_name, introduction, username, total_area, idle_area, location, icon_url, 
+    rent_period, create_time, modify_time, remark, suited_crops, latitude_longitude
+  </sql>
+  <sql id="Blob_Column_List">
+    image_url, vr_url
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from gf_farm
+    where farm_id = #{farmId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from gf_farm
+    where farm_id = #{farmId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="farm_id" keyProperty="farmId" parameterType="com.callforcode.greenfarm.entity.GFFarmWithBLOBs" useGeneratedKeys="true">
+    insert into gf_farm (farm_name, introduction, username, 
+      total_area, idle_area, location, 
+      icon_url, rent_period, create_time, 
+      modify_time, remark, suited_crops, 
+      latitude_longitude, image_url, vr_url
+      )
+    values (#{farmName,jdbcType=VARCHAR}, #{introduction,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{totalArea,jdbcType=INTEGER}, #{idleArea,jdbcType=INTEGER}, #{location,jdbcType=VARCHAR}, 
+      #{iconUrl,jdbcType=VARCHAR}, #{rentPeriod,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{suitedCrops,jdbcType=VARCHAR}, 
+      #{latitudeLongitude,jdbcType=VARCHAR}, #{imageUrl,jdbcType=LONGVARCHAR}, #{vrUrl,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="farm_id" keyProperty="farmId" parameterType="com.callforcode.greenfarm.entity.GFFarmWithBLOBs" useGeneratedKeys="true">
+    insert into gf_farm
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="farmName != null">
+        farm_name,
+      </if>
+      <if test="introduction != null">
+        introduction,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="totalArea != null">
+        total_area,
+      </if>
+      <if test="idleArea != null">
+        idle_area,
+      </if>
+      <if test="location != null">
+        location,
+      </if>
+      <if test="iconUrl != null">
+        icon_url,
+      </if>
+      <if test="rentPeriod != null">
+        rent_period,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="suitedCrops != null">
+        suited_crops,
+      </if>
+      <if test="latitudeLongitude != null">
+        latitude_longitude,
+      </if>
+      <if test="imageUrl != null">
+        image_url,
+      </if>
+      <if test="vrUrl != null">
+        vr_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="farmName != null">
+        #{farmName,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null">
+        #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="totalArea != null">
+        #{totalArea,jdbcType=INTEGER},
+      </if>
+      <if test="idleArea != null">
+        #{idleArea,jdbcType=INTEGER},
+      </if>
+      <if test="location != null">
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="iconUrl != null">
+        #{iconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="rentPeriod != null">
+        #{rentPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="suitedCrops != null">
+        #{suitedCrops,jdbcType=VARCHAR},
+      </if>
+      <if test="latitudeLongitude != null">
+        #{latitudeLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUrl != null">
+        #{imageUrl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="vrUrl != null">
+        #{vrUrl,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.callforcode.greenfarm.entity.GFFarmWithBLOBs">
+    update gf_farm
+    <set>
+      <if test="farmName != null">
+        farm_name = #{farmName,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null">
+        introduction = #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="totalArea != null">
+        total_area = #{totalArea,jdbcType=INTEGER},
+      </if>
+      <if test="idleArea != null">
+        idle_area = #{idleArea,jdbcType=INTEGER},
+      </if>
+      <if test="location != null">
+        location = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="iconUrl != null">
+        icon_url = #{iconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="rentPeriod != null">
+        rent_period = #{rentPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="suitedCrops != null">
+        suited_crops = #{suitedCrops,jdbcType=VARCHAR},
+      </if>
+      <if test="latitudeLongitude != null">
+        latitude_longitude = #{latitudeLongitude,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUrl != null">
+        image_url = #{imageUrl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="vrUrl != null">
+        vr_url = #{vrUrl,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where farm_id = #{farmId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.callforcode.greenfarm.entity.GFFarmWithBLOBs">
+    update gf_farm
+    set farm_name = #{farmName,jdbcType=VARCHAR},
+      introduction = #{introduction,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      total_area = #{totalArea,jdbcType=INTEGER},
+      idle_area = #{idleArea,jdbcType=INTEGER},
+      location = #{location,jdbcType=VARCHAR},
+      icon_url = #{iconUrl,jdbcType=VARCHAR},
+      rent_period = #{rentPeriod,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      suited_crops = #{suitedCrops,jdbcType=VARCHAR},
+      latitude_longitude = #{latitudeLongitude,jdbcType=VARCHAR},
+      image_url = #{imageUrl,jdbcType=LONGVARCHAR},
+      vr_url = #{vrUrl,jdbcType=LONGVARCHAR}
+    where farm_id = #{farmId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.callforcode.greenfarm.entity.GFFarm">
+    update gf_farm
+    set farm_name = #{farmName,jdbcType=VARCHAR},
+      introduction = #{introduction,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      total_area = #{totalArea,jdbcType=INTEGER},
+      idle_area = #{idleArea,jdbcType=INTEGER},
+      location = #{location,jdbcType=VARCHAR},
+      icon_url = #{iconUrl,jdbcType=VARCHAR},
+      rent_period = #{rentPeriod,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      suited_crops = #{suitedCrops,jdbcType=VARCHAR},
+      latitude_longitude = #{latitudeLongitude,jdbcType=VARCHAR}
+    where farm_id = #{farmId,jdbcType=INTEGER}
+  </update>
+  
+</mapper>

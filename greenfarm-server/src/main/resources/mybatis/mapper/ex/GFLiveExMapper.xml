@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callforcode.greenfarm.mapper.GFLiveMapper">
+  <select id="selectByWhere" parameterType="java.util.List" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gf_live
+    <where>
+       <if test="liveId != null">
+        AND live_id = #{liveId,jdbcType=INTEGER}
+      </if>
+       <if test="farmId != null">
+        AND farm_id = #{farmId,jdbcType=INTEGER}
+      </if>
+      <if test="username != null">
+        AND username = #{username,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        AND status = #{status,jdbcType=VARCHAR}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="modifyTime != null">
+        AND modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="remark != null">
+        AND  UPPER(remark) like UPPER(CONCAT('%',#{remark,jdbcType=VARCHAR},'%'))
+      </if>
+    </where>
+    ORDER BY create_time DESC
+  </select>
+  
+  <select id="getLivesByMinutes" resultMap="BaseResultMap" >
+    select gl.live_id,gl.step_id
+    from gf_live gl
+    where gl.live_id in (select glvb.live_id
+                     from gf_live_video_bat glvb
+                     where glvb.modify_time <![CDATA[<]]> #{customDate,jdbcType=TIMESTAMP})
+  </select>
+   <select id="getLiveIdListBySeconds" resultType="java.lang.Integer" >
+    select live_id
+    from gf_live
+    where tick_time <![CDATA[<=]]> #{customDate,jdbcType=TIMESTAMP}
+    and status = '1'
+  </select>
+  
+   <update id="updateStatusByIdLiveList" parameterType="java.util.List">
+    update gf_live  set status = '0'
+     where live_id in
+    <foreach collection="idLiveList" item="liveId" index="index" open="(" close=")" separator=",">
+      #{liveId}
+    </foreach>
+  </update>
+</mapper>

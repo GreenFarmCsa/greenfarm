@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callforcode.greenfarm.mapper.GFTaskDetailMapper">
+  <resultMap id="BaseResultMap" type="com.callforcode.greenfarm.entity.GFTaskDetail">
+    <id column="detail_id" jdbcType="INTEGER" property="detailId" />
+    <result column="step_id" jdbcType="INTEGER" property="stepId" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.callforcode.greenfarm.entity.GFTaskDetail">
+    <result column="oper_record" jdbcType="LONGVARCHAR" property="operRecord" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    detail_id, step_id, username, location, status, create_time, modify_time, remark
+  </sql>
+  <sql id="Blob_Column_List">
+    oper_record
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from gf_task_detail
+    where detail_id = #{detailId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from gf_task_detail
+    where detail_id = #{detailId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="detail_id" keyProperty="detailId" parameterType="com.callforcode.greenfarm.entity.GFTaskDetail" useGeneratedKeys="true">
+    insert into gf_task_detail (step_id, username, location, 
+      status, create_time, modify_time, 
+      remark, oper_record)
+    values (#{stepId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR}, #{operRecord,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="detail_id" keyProperty="detailId" parameterType="com.callforcode.greenfarm.entity.GFTaskDetail" useGeneratedKeys="true">
+    insert into gf_task_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stepId != null">
+        step_id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="location != null">
+        location,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="operRecord != null">
+        oper_record,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stepId != null">
+        #{stepId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null">
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="operRecord != null">
+        #{operRecord,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.callforcode.greenfarm.entity.GFTaskDetail">
+    update gf_task_detail
+    <set>
+      <if test="stepId != null">
+        step_id = #{stepId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null">
+        location = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="operRecord != null">
+        oper_record = #{operRecord,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where detail_id = #{detailId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.callforcode.greenfarm.entity.GFTaskDetail">
+    update gf_task_detail
+    set step_id = #{stepId,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      location = #{location,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      oper_record = #{operRecord,jdbcType=LONGVARCHAR}
+    where detail_id = #{detailId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.callforcode.greenfarm.entity.GFTaskDetail">
+    update gf_task_detail
+    set step_id = #{stepId,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      location = #{location,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR}
+    where detail_id = #{detailId,jdbcType=INTEGER}
+  </update>
+</mapper>

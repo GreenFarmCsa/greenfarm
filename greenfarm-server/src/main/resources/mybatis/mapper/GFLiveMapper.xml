@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callforcode.greenfarm.mapper.GFLiveMapper">
+  <resultMap id="BaseResultMap" type="com.callforcode.greenfarm.entity.GFLive">
+    <id column="live_id" jdbcType="INTEGER" property="liveId" />
+    <result column="farm_id" jdbcType="INTEGER" property="farmId" />
+    <result column="step_id" jdbcType="INTEGER" property="stepId" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="tick_time" jdbcType="TIMESTAMP" property="tickTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    live_id, farm_id, step_id, username, status, create_time, modify_time, tick_time, 
+    remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gf_live
+    where live_id = #{liveId,jdbcType=INTEGER}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from gf_live
+    where live_id = #{liveId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="live_id" keyProperty="liveId" parameterType="com.callforcode.greenfarm.entity.GFLive" useGeneratedKeys="true">
+    insert into gf_live (farm_id, step_id, username, 
+      status, create_time, modify_time, 
+      tick_time, remark)
+    values (#{farmId,jdbcType=INTEGER}, #{stepId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{tickTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="live_id" keyProperty="liveId" parameterType="com.callforcode.greenfarm.entity.GFLive" useGeneratedKeys="true">
+    insert into gf_live
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="farmId != null">
+        farm_id,
+      </if>
+      <if test="stepId != null">
+        step_id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="tickTime != null">
+        tick_time,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="farmId != null">
+        #{farmId,jdbcType=INTEGER},
+      </if>
+      <if test="stepId != null">
+        #{stepId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tickTime != null">
+        #{tickTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.callforcode.greenfarm.entity.GFLive">
+    update gf_live
+    <set>
+      <if test="farmId != null">
+        farm_id = #{farmId,jdbcType=INTEGER},
+      </if>
+      <if test="stepId != null">
+        step_id = #{stepId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tickTime != null">
+        tick_time = #{tickTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where live_id = #{liveId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.callforcode.greenfarm.entity.GFLive">
+    update gf_live
+    set farm_id = #{farmId,jdbcType=INTEGER},
+      step_id = #{stepId,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      tick_time = #{tickTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR}
+    where live_id = #{liveId,jdbcType=INTEGER}
+  </update>
+</mapper>

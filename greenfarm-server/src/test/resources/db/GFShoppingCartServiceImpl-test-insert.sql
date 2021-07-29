@@ -1,0 +1,1 @@
+INSERT INTO gf_shopping_cart (cart_id,username, product_id, number, create_time, modify_time, remark) VALUES (1233,'MVCTEST',1000, 5,   now(), now(), 'tset' );

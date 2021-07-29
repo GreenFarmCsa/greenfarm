@@ -1,0 +1,668 @@
+
+.mt20{
+    margin-top:20px;
+}
+.mt40{
+    margin-top:40px;
+}
+.mt60{
+    margin-top:60px;
+}
+
+
+.cloudFunDemo{
+    .van-cell__right-icon{
+        height: 0.48rem;
+        font-size: 0.36rem;
+        line-height: 0.48rem;
+        color:#c8c8cd;
+    }
+    .van-button{
+        height: 70px;
+        font-size: 28px;
+    }
+    .van-button--normal{
+        padding:0 60px;
+    }
+    .van-button--round {
+        &.van-button--block{
+            border-radius: 99px;
+        }
+    }
+    .van-button--round {
+        border-radius: 10px;
+    }
+}
+
+
+.resetVantStyle{
+    .van-tabbar{
+        height:120px;
+        .van-tabbar-item{
+            font-size:32px;
+            .van-tabbar-item__icon{
+                font-size:42px;
+                .van-info--dot {
+                    width: 16px;
+                    height: 16px;
+                }
+                .van-info {
+                    padding: 0 6px;
+                    font-size: 24px;           
+                    line-height: 1.2;          
+                    border-radius: 32px;
+                }
+            }
+        }
+    }
+    .van-button{
+        height: 70px;
+        font-size: 28px;
+    }
+    .van-cell{
+        padding: 20px 32px;
+        font-size: 30px;
+        line-height: 48px;
+        .van-cell__label {
+            font-size: 26px;
+            line-height: 1.5;
+        }
+        .van-cell__left-icon{
+            font-size: 30px;
+            line-height: inherit;
+            height:auto;
+        }
+    }
+    .van-icon{
+        .van-info{
+            &.van-info--dot{
+                padding:0 0;
+            }
+            padding: 2px 6px;
+            font-size: 24px;
+        }
+    }
+    .van-dialog{
+        height:auto;
+        border-radius: 0.32rem;
+        .van-dialog__header{
+            line-height: 1.5;
+            padding-bottom: 26px;
+            font-weight: 700;
+        }
+        .van-dialog__content{
+            min-height: 156px;
+            height:auto;
+            .van-dialog__message{
+                line-height: 1.5;
+            }
+        }
+    }
+    .van-toast{
+        padding:10px 20px;
+        width: auto;
+        .van-toast__text{
+            font-size: 30px;
+            line-height: 1.5;
+        }
+    }
+    .van-calendar{
+        .van-calendar__header{
+            .van-calendar__header-title{
+                font-size: 32px;
+                height: 88px;
+                line-height: 88px;
+            }
+            .van-calendar__header-subtitle{
+                font-size: 30px;
+            }
+            .van-calendar__weekday{
+                font-size: 24px;
+                line-height: 60px;
+            }
+        }
+        .van-calendar__body{
+            .van-calendar__day{
+                font-size: 32px;
+            }
+            .van-calendar__header-subtitle, .van-calendar__header-title, .van-calendar__month-title{
+                font-size: 30px;
+                height: 88px;
+                line-height: 88px;
+            }
+        }
+    }
+    .van-checkbox{
+        .van-checkbox__label{
+            margin-left: 16px;
+            line-height: 40px;
+        }
+        .van-checkbox__icon{
+            font-size: 30px;
+        }
+    }
+    .van-datetime-picker{
+        .van-picker__toolbar{
+            height: 88px;
+            .van-picker__cancel,.van-picker__confirm{
+                font-size: 28px;
+            }
+            .van-picker__title{
+                font-size: 32px;
+                line-height: 40px;
+            }
+        }
+        .van-picker__columns{
+            .van-picker-column{
+                font-size: 32px;
+            }
+        }
+    }
+    .van-picker{
+        .van-picker__toolbar{
+            height: 88px;
+            .van-picker__cancel,.van-picker__confirm{
+                font-size: 28px;
+            }
+            .van-picker__title{
+                font-size: 32px;
+                line-height: 40px;
+            }
+        }
+        .van-picker__columns{
+            .van-picker-column{
+                font-size: 32px;
+            }
+        }
+    }
+    .van-radio-group{
+        .van-radio{
+            .van-radio__icon{
+                font-size:30px;
+            }
+            .van-radio__label{
+                line-height: 40px;
+                margin-left: 16px;
+            }
+        }
+    }
+    .van-rate{
+        .van-rate__item:not(:last-child) {
+            padding-right: 8px;
+        }
+        .van-rate__icon{
+            font-size:32px; 
+        }
+    }
+    .van-search{
+        padding: 20px 24px;
+        .van-cell{
+            padding: 10px 16px 10px 0;
+            .van-field__left-icon{
+                margin-right: 8px;
+                .van-icon{
+                    font-size: 32px;
+                }
+            }
+            .van-field__right-icon{
+                .van-icon{
+                    font-size: 32px;
+                }
+            }
+        }
+    }
+    .van-slider{
+        height: 4px;
+        .van-slider__button{
+            width: 48px;
+            height: 48px;
+        }
+    }
+    .van-stepper{
+        .van-stepper__minus, .van-stepper__plus{
+            width: 56px;
+            height: 56px;
+        }
+        .van-stepper__input{
+            width: 64px;
+            height: 56px;
+            margin: 0 4px;
+            padding: 0;
+            font-size: 28px
+        }
+    }
+    .van-switch{
+        font-size:60px;
+    }
+    .van-uploader{
+        .van-uploader__upload{
+            width: 160px;
+            height: 160px;
+            margin: 0 16px 16px 0;
+            .van-uploader__upload-icon{
+                font-size: 48px;
+            }
+        }
+    }
+    .van-popup{
+        .van-action-sheet__item {
+            line-height: 44px;
+            padding: 28px 32px;
+            font-size: 32px;
+        }
+        .van-popup__close-icon{
+            font-size: 44px;
+        }
+    }
+    .van-dropdown-menu{
+        .van-dropdown-menu__bar{
+            height: 96px;
+            .van-dropdown-menu__title {
+                padding: 0 16px;
+                font-size: 30px;
+                line-height: 44px;
+            }
+        }
+        .van-dropdown-menu__item{
+            .van-dropdown-menu__title::after {
+                right: -16px;
+                margin-top: -16px;
+                border: 10px solid;
+                border-color: transparent transparent #dcdee0 #dcdee0;
+                transform: rotate(-45deg);
+                opacity: .8;
+            }
+        }
+    }
+    .van-loading__spinner{
+        width: 60px;
+        height: 60px;
+    }
+    .van-loading__text {
+        margin-left: 16px;
+        font-size: 28px;
+    }
+    .van-list__error-text, .van-list__finished-text, .van-list__loading {
+        font-size: 28px;
+        line-height: 80px;
+    }
+    .van-notify{
+        line-height: 40px;
+    }
+    .van-circle__text{
+        font-size: 28px;
+    }
+    .van-collapse-item__content{
+        font-size: 30px;
+    }
+    .van-divider {
+        margin: 32px 0;
+        font-size: 28px;
+        line-height: 48px;
+    }
+    .van-image-preview__index{
+        font-size: 28px;
+        line-height: 40px;
+    }
+    .van-notice-bar {
+        height: 80px;
+        padding: 0 32px;
+        font-size: 28px;
+        line-height: 48px;
+        .van-notice-bar__left-icon, .van-notice-bar__right-icon {
+            min-width: 48px;
+            font-size: 32px;
+        }
+    }
+    .van-progress {
+        height: 8px;
+        border-radius: 8px;
+        .van-progress__pivot {
+            padding: 0 10px;
+            font-size: 20px;
+            line-height: 1.6;
+        }
+    }
+    .van-steps--horizontal{
+        padding: 20px 20px 0;
+        .van-step{
+            font-size: 28px;
+        }
+        .van-step__icon {
+            font-size: 36px;
+        }
+        .van-step__circle {
+            width: 20px;
+            height:20px;
+        }
+        .van-step__circle-container {
+            top: 60px;
+            left: -16px;
+            padding: 0 16px;
+        }
+        .van-steps__items {
+            padding-bottom: 50px;
+        }
+        .van-step__line {
+            top: 60px;
+            left: 0;
+            height: 2px;
+        }
+        .van-step__title {
+            font-size: 30px;
+        }
+    }
+    .van-steps--vertical{
+        padding: 0 0 0 60px;
+        .van-step--vertical {
+            padding: 20px 20px 20px 0;
+            line-height: 36px;
+        }
+        .van-step {
+            font-size: 30px;
+        }
+        .van-step__circle-container {
+            position: absolute;
+            top: 40px;
+            font-size: 36px;
+        }
+        .van-step__circle {
+            width: 20px;
+            height:20px;
+        }
+    }
+    .van-swipe__indicator{
+        width:12px;
+        height:12px;
+    }
+    .van-tag {
+        padding: 6px 10px;
+        font-size: 30px;
+        line-height: 32px;
+        border-radius: 4px;
+    }
+    .van-index-bar{
+        .van-index-bar__sidebar{
+            .van-index-bar__index {
+                padding: 0 8px 0 32px;
+                font-weight: 500;
+                font-size: 28px;
+                line-height: 36px;
+            }
+        }
+        .van-index-anchor {
+            padding: 0 32px;
+            font-size: 30px;
+            line-height:36px;
+        }
+    }
+    .van-nav-bar{
+        height:70px;
+        .van-nav-bar__left,.van-nav-bar__title,.van-nav-bar__right{
+            font-size: 30px;
+            .van-nav-bar__arrow{
+                font-size: 32px;
+            }
+        }
+    }
+    .van-pagination{
+        font-size: 40px;
+    }
+    .van-sidebar {
+        width: 180px;
+        .van-sidebar-item {
+            padding: 40px 24px;
+            font-size: 30px;
+            line-height: 1.5;
+        }
+        .van-sidebar-item--select::before {
+            height: 28px;
+        }
+        .van-info--dot {
+            width: 16px;
+            height: 16px;
+        }
+        .van-info {
+            padding: 0 6px;
+            font-size: 24px;           
+            line-height: 1.2;          
+            border-radius: 32px;
+        }
+    }
+    .van-tree-select__item {
+        padding: 0 32px 0 16px;
+        line-height: 96px;
+        font-size: 32px;
+        .van-tree-select__selected{
+            font-size: 32px;
+        }
+    }
+    .van-tabs {
+        .van-tab {
+            padding: 0 8px;  
+            font-size: 32px;
+            line-height: 80px;
+        }
+        .van-tabs__line {
+            width: 80px;
+            height: 3px;
+        }
+    }
+    .van-field__left-icon .van-icon, .van-field__right-icon .van-icon{
+        font-size: 32px;
+    }
+    .van-address-list{
+        padding: 24px 24px 16px;
+        .van-address-item__name,.van-address-item__address{
+            font-size: 32px;
+            line-height: 1.5;
+        }
+        .van-address-item__edit{
+            font-size: 32px;
+        }
+        .van-address-list__disabled-text {
+            padding: 20px 32px;
+            font-size: 28px;
+            line-height: 40px;
+        }
+    }
+    .van-address-edit-detail{
+        padding:0
+    }
+    .van-card{
+        font-size: 30px;
+        .van-card__thumb {
+            width: 160px;
+            height: 160px;
+            margin-right: 16px;
+        }
+        .van-card__title {
+            max-height: 64px;
+            line-height: 32px;
+        }
+        .van-card__desc {
+            max-height: 40px;
+            line-height: 40px;
+        }
+        .van-card__bottom {
+            line-height: 40px;
+            .van-card__price,.van-card__origin-price{
+                font-size: 26px;
+            }
+        }
+    }
+    .van-contact-card{
+        .van-contact-card__value{
+            line-height: inherit;
+        }
+    }
+    .van-coupon-list{
+        .van-coupon-list__exchange-bar{
+            padding-top:20px;
+            .van-coupon-list__field{
+              padding:10px 0 10px 20px;
+              .van-field__body{
+                height:auto;
+                line-height:normal;
+                .van-field__control{
+                  height:68px;
+                }
+              }
+            }
+            .van-coupon-list__exchange{
+                font-size:32px;
+            }
+        }
+        .van-coupon-list__close{
+            height:80px;
+            font-size:28px;
+        }
+        .van-coupon-list__list{
+            height:800px!important;
+            .van-coupon{
+                margin:0 20px 20px;
+                .van-coupon__head{
+                    padding:0 20px;
+                    .van-coupon__condition{
+                        font-size:24px;
+                        line-height: 1.5;
+                    }
+                }
+                .van-coupon__name{
+                    font-size:24px;
+                    line-height: 1.5;
+                }
+                .van-coupon__valid{
+                    font-size:24px;
+                }
+            }
+            .van-coupon__description{
+                padding:20px 20px;
+            }
+            .van-checkbox__icon .van-icon{
+                line-height: normal;
+            }
+        }
+        .van-tabs__wrap{
+            height:80px;
+            .van-tabs__line{
+                width:80px;
+            }
+            .van-tab__text {
+                font-size: 30px;
+                line-height: normal;
+            }
+        }
+    }
+    .van-grid-item__content{
+        padding:20px 10px;
+        .van-grid-item__text{
+            font-size: 30px;
+        }
+        .van-info{
+            padding:0 6px;
+            &.van-info--dot{
+                width:10px;
+                height: 10px;
+                padding:0 0;
+            }
+        }
+    }
+    .van-goods-action{
+        .van-goods-action-icon{
+            font-size: 30px;
+            .van-goods-action-icon__icon{
+                font-size: 36px;
+            }
+        }
+    }
+    .van-submit-bar{
+        .van-submit-bar__bar{
+            height: 100px;
+            padding: 0 30px;
+            font-size:28px;
+            .van-submit-bar__button{
+                width:auto;
+            }
+            .van-submit-bar__price{
+                font-size:28px;
+            }
+        }
+        .van-submit-bar__tip {
+            padding: 16px 24px;
+            font-size: 30px;
+        }
+    }
+    .van-sku-header{
+        margin: 0 32px;
+        .van-sku-header__img-wrap {
+            width: 192px;
+            height: 192px;
+            margin: 24px 24px 24px 0;
+            border-radius: 8px;
+        }
+        .van-sku-header__goods-info {
+            padding: 24px 24px 24px 0;
+            .van-sku__price-symbol{
+                font-size: 32px;
+            }
+            .van-sku__price-num {
+                font-size: 44px;
+            }
+            .van-sku-header-item {
+                margin-top: 16px;
+                font-size: 24px;
+                line-height: 32px;
+            }
+        }
+    }
+    .van-sku-group-container {
+        padding-top: 24px;
+        .van-sku-row {
+            margin: 0 32px 24px;
+        }
+        .van-sku-row__title {
+            padding-bottom: 24px;
+            font-size:32px;
+        }
+        .van-sku-row__row {
+            margin-bottom: 8px;
+            padding: 0 32px;
+            .van-sku-row__image-item {
+                width: 220px;
+                margin: 0 8px 8px 0;
+                flex-direction: row;
+                .van-sku-row__image-item-img {
+                    width: 68px;
+                    height: 68px;
+                }
+                .van-sku-row__image-item-name {
+                    height: 68px;
+                    padding: 8px;
+                    font-size: 28px;
+                    line-height: 32px;
+                }
+            }
+        }
+    }
+    .van-sku-stepper-stock {
+        padding: 24px 32px;
+        line-height: 60px;
+        font-size:32px;
+    }
+    .van-sku-actions {
+        padding: 16px 32px;
+        .van-button {
+            height: 80px;
+            font-size: 28px;
+        }
+        .van-button:last-of-type {
+            border-top-right-radius: 40px;
+            border-bottom-right-radius: 40px;
+        }
+        .van-button:first-of-type {
+            border-top-left-radius: 40px;
+            border-bottom-left-radius: 40px;
+        }
+    }
+}

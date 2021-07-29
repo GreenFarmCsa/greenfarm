@@ -1,0 +1,1 @@
+INSERT INTO gf_seed (seed_id,product_id, seed_name, seed_introduction, production, seed_price, fertilizer_name, fertilizer_price, fertilizer_amount, watering_quantity, mature_period, create_time, modify_time, remark, lowest_planting) VALUES (100,3, 'dddd', 'information', 'ss', 23, 'ddd', 23, '3', '32', 3, '2021-06-22 03:14:11', null, 'ddddtest', null)

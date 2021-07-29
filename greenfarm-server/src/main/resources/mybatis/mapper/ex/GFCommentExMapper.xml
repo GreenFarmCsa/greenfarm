@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callforcode.greenfarm.mapper.GFCommentMapper">
+ <select id="queryCommentByTopicId" parameterType="integer" resultMap="ResultMapWithBLOBs">
+
+   select
+   <include refid="Base_Column_List" />
+   ,
+   <include refid="Blob_Column_List" />
+   from gf_comment
+   where topic_id = #{topicId,jdbcType=INTEGER}
+ </select>
+ <delete id="deleteByTopicId" parameterType="java.lang.Integer">
+    delete from gf_comment
+    where topic_id = #{topicId,jdbcType=INTEGER}
+  </delete>
+</mapper>

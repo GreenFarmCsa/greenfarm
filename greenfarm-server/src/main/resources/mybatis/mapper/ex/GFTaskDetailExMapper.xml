@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callforcode.greenfarm.mapper.GFTaskDetailMapper">
+
+  <sql id="ALL_Column_List">
+    detail_id, step_id, username, location, status, create_time, modify_time, remark, oper_record
+  </sql>
+
+  <select id="queryTaskDetailByStepId" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select
+    <include refid="ALL_Column_List" />
+    from gf_task_detail
+    where step_id = #{stepId,jdbcType=INTEGER}
+  </select>
+  <update id="updateTaskDetailByStepId" parameterType="com.callforcode.greenfarm.entity.GFTaskDetail">
+    update gf_task_detail
+    <set>
+      <if test="stepId != null">
+        step_id = #{stepId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null">
+        location = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="operRecord != null">
+        oper_record = #{operRecord,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where step_id = #{stepId,jdbcType=INTEGER}
+  </update>
+
+  <select id="queryPlantDetailByProductId" parameterType="integer" resultMap="ResultMapWithBLOBs">
+     select
+     <include refid="ALL_Column_List" />
+      from gf_task_detail gtd
+        where exists(
+        select 1 from gf_task_step gts
+        where gts.step_id =gtd .step_id
+        and exists (select 1 from gf_plant_task gpt
+        where gts.task_id=gpt.task_id and gpt.product_id=#{productId,jdbcType=INTEGER}
+        ) )
+
+  </select>
+  
+  	<select id="selectByWhere" parameterType="java.util.List"
+		resultMap="ResultMapWithBLOBs">
+		select
+		<include refid="Base_Column_List" />
+		from gf_task_detail
+	</select>
+</mapper>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="70px" height="70px" viewBox="0 0 70 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>编组 2备份 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="70" height="70" rx="4"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="70" height="70" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="11-商品上架" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1我的-商品上架" transform="translate(-15.000000, -849.000000)">
+            <g id="编组-2备份-3" transform="translate(15.000000, 849.000000)">
+                <use id="矩形" stroke="#D5D4D4" mask="url(#mask-2)" stroke-width="2" fill="#F5F5F5" stroke-dasharray="4,3" xlink:href="#path-1"></use>
+                <g id="shipin25" transform="translate(21.000000, 25.000000)" fill="#F39F15" fill-rule="nonzero">
+                    <path d="M26.8333333,3.97133334 L23.3333333,4.93033332 L23.3333333,3.65166666 C23.3333333,1.64499999 21.6533333,0 19.6,0 L3.73333333,0 C1.68,0 0,1.64383332 0,3.65166666 L0,17.3483333 C0,19.355 1.68,21 3.73333333,21 L19.6,21 C21.6533333,21 23.3333333,19.3561667 23.3333333,17.3483333 L23.3333333,16.0696667 L26.8333333,17.0286667 C27.44,17.2106667 28,16.7545 28,16.1606667 L28,4.83933333 C28,4.24550001 27.3933333,3.83483334 26.8333333,3.97133334 L26.8333333,3.97133334 Z M15.9133333,11.2758333 L10.3133333,14.9275 C9.70666668,15.2938333 8.86666668,14.8831667 8.86666668,14.1516667 L8.86666668,6.84833334 C8.86666668,6.11683334 9.70666668,5.70616668 10.3133333,6.11683332 L15.9133333,9.76850001 C16.4733333,10.0893333 16.4733333,10.9118333 15.9133333,11.2758333 Z" id="形状"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callforcode.greenfarm.mapper.GFCarbonFootprintMapper">
+  <resultMap id="BaseResultMap" type="com.callforcode.greenfarm.entity.GFCarbonFootprint">
+    <id column="footprint_id" jdbcType="INTEGER" property="footprintId" />
+    <result column="footprint_name" jdbcType="VARCHAR" property="footprintName" />
+    <result column="footprint_category" jdbcType="VARCHAR" property="footprintCategory" />
+    <result column="farm_id" jdbcType="INTEGER" property="farmId" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="carbon_reduction" jdbcType="DECIMAL" property="carbonReduction" />
+    <result column="carbon_credit" jdbcType="INTEGER" property="carbonCredit" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    footprint_id, footprint_name, footprint_category, farm_id, username, carbon_reduction, 
+    carbon_credit, location, create_time, modify_time, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gf_carbon_footprint
+    where footprint_id = #{footprintId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from gf_carbon_footprint
+    where footprint_id = #{footprintId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="footprint_id" keyProperty="footprintId" parameterType="com.callforcode.greenfarm.entity.GFCarbonFootprint" useGeneratedKeys="true">
+    insert into gf_carbon_footprint (footprint_name, footprint_category, 
+      farm_id, username, carbon_reduction, 
+      carbon_credit, location, create_time, 
+      modify_time, remark)
+    values (#{footprintName,jdbcType=VARCHAR}, #{footprintCategory,jdbcType=VARCHAR}, 
+      #{farmId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{carbonReduction,jdbcType=DECIMAL}, 
+      #{carbonCredit,jdbcType=INTEGER}, #{location,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="footprint_id" keyProperty="footprintId" parameterType="com.callforcode.greenfarm.entity.GFCarbonFootprint" useGeneratedKeys="true">
+    insert into gf_carbon_footprint
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="footprintName != null">
+        footprint_name,
+      </if>
+      <if test="footprintCategory != null">
+        footprint_category,
+      </if>
+      <if test="farmId != null">
+        farm_id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="carbonReduction != null">
+        carbon_reduction,
+      </if>
+      <if test="carbonCredit != null">
+        carbon_credit,
+      </if>
+      <if test="location != null">
+        location,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="footprintName != null">
+        #{footprintName,jdbcType=VARCHAR},
+      </if>
+      <if test="footprintCategory != null">
+        #{footprintCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="farmId != null">
+        #{farmId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="carbonReduction != null">
+        #{carbonReduction,jdbcType=DECIMAL},
+      </if>
+      <if test="carbonCredit != null">
+        #{carbonCredit,jdbcType=INTEGER},
+      </if>
+      <if test="location != null">
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.callforcode.greenfarm.entity.GFCarbonFootprint">
+    update gf_carbon_footprint
+    <set>
+      <if test="footprintName != null">
+        footprint_name = #{footprintName,jdbcType=VARCHAR},
+      </if>
+      <if test="footprintCategory != null">
+        footprint_category = #{footprintCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="farmId != null">
+        farm_id = #{farmId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="carbonReduction != null">
+        carbon_reduction = #{carbonReduction,jdbcType=DECIMAL},
+      </if>
+      <if test="carbonCredit != null">
+        carbon_credit = #{carbonCredit,jdbcType=INTEGER},
+      </if>
+      <if test="location != null">
+        location = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where footprint_id = #{footprintId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.callforcode.greenfarm.entity.GFCarbonFootprint">
+    update gf_carbon_footprint
+    set footprint_name = #{footprintName,jdbcType=VARCHAR},
+      footprint_category = #{footprintCategory,jdbcType=VARCHAR},
+      farm_id = #{farmId,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      carbon_reduction = #{carbonReduction,jdbcType=DECIMAL},
+      carbon_credit = #{carbonCredit,jdbcType=INTEGER},
+      location = #{location,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR}
+    where footprint_id = #{footprintId,jdbcType=INTEGER}
+  </update>
+</mapper>

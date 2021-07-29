@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.callforcode.greenfarm.mapper.GFFinanceProductMapper">
+	<resultMap id="FinanceProdRlnUserResultMap"
+		type="com.callforcode.greenfarm.dto.GFFinanceProdDTO">
+		<id column="finance_product_id" jdbcType="INTEGER"
+			property="financeProductId" />
+		<result column="org_name" jdbcType="VARCHAR" property="orgName" />
+		<result column="finance_product_category" jdbcType="VARCHAR"
+			property="financeProductCategory" />
+		<result column="finance_limit" jdbcType="VARCHAR"
+			property="financeLimit" />
+		<result column="valid_period" jdbcType="VARCHAR"
+			property="validPeriod" />
+		<result column="create_time" jdbcType="TIMESTAMP"
+			property="createTime" />
+		<result column="modify_time" jdbcType="TIMESTAMP"
+			property="modifyTime" />
+		<result column="u_limit" jdbcType="VARCHAR" property="limit" />
+		<!-- <result column="user_create_time" jdbcType="TIMESTAMP" property="user_create_time"/> -->
+		<!-- <result column="user_modify_time" jdbcType="TIMESTAMP" property="user_modify_time"/> -->
+		<result column="end_date" jdbcType="TIMESTAMP"
+			property="endDate" />
+		<result column="start_date" jdbcType="TIMESTAMP"
+			property="startDate" />
+	</resultMap>
+	<select id="selectAll" parameterType="string"
+		resultMap="FinanceProdRlnUserResultMap">
+		SELECT
+		p.finance_product_id, p.finance_product_name,
+		p.finance_product_desc, p.org_name, p.finance_product_category,
+		p.finance_limit, p.valid_period, p.create_time,
+		p.modify_time,
+		p.remark,
+		u.create_time as user_create_time,u.modify_time as
+		user_modify_time,
+		u.finance_limit as u_limit ,u.start_date ,u.end_date
+		FROM gf_finance_product p
+		LEFT JOIN gf_user_finance u
+		ON
+		p.finance_product_id = u.finance_product_id
+
+		ORDER BY p.create_time DESC
+	</select>
+	<select id="selectByWhere" parameterType="java.util.List"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from gf_finance_product
+		<where>
+			<if test="financeProductId != null">
+				AND finance_product_id = #{financeProductId,jdbcType=INTEGER}
+			</if>
+			<if test="financeProductName != null">
+				AND finance_product_name = #{financeProductName,jdbcType=VARCHAR}
+			</if>
+			<if test="financeProductNo != null">
+				AND finance_product_no = #{financeProductNo,jdbcType=VARCHAR}
+			</if>
+			<if test="financeProductDesc != null">
+				AND finance_product_desc = #{financeProductDesc,jdbcType=VARCHAR}
+			</if>
+			<if test="orgName != null">
+				AND org_name = #{orgName,jdbcType=VARCHAR}
+			</if>
+			<if test="financeProductCategory != null">
+				AND finance_product_category =
+				#{financeProductCategory,jdbcType=VARCHAR}
+			</if>
+			<if test="financeLimit != null">
+				AND finance_limit = #{financeLimit,jdbcType=VARCHAR},
+			</if>
+			<if test="validPeriod != null">
+				AND valid_period = #{validPeriod,jdbcType=VARCHAR}
+			</if>
+			<if test="createTime != null">
+				AND create_time = #{createTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="modifyTime != null">
+				AND modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="remark != null">
+				AND remark = #{remark,jdbcType=VARCHAR}
+			</if>
+		</where>
+		ORDER BY create_time DESC
+	</select>
+
+	<select id="findTreeByWhere" parameterType="java.util.List"
+		resultMap="BaseResultMap">
+		SELECT
+		p.finance_product_id, p.finance_product_name,p.finance_product_no,
+		p.finance_product_desc, p.org_name, p.finance_product_category,
+		p.finance_limit, p.valid_period, p.create_time,
+		p.modify_time, p.remark
+		FROM gf_finance_product p
+		LEFT JOIN gf_user_finance u
+		ON p.finance_product_id = u.finance_product_id
+		<where>
+			<if test="tree != null">
+				<if test="tree.userName != null and tree.userName != ''">
+					AND UPPER(u.username) = UPPER(#{tree.userName,jdbcType=VARCHAR})
+				</if>
+			</if>
+		</where>
+		ORDER BY p.create_time DESC
+	</select>
+	<select id="querryAllWithSignStatus" parameterType="java.util.List"  resultType="com.callforcode.greenfarm.entity.GFFinanceProdAdd">
+		select 
+		f.finance_product_id financeProductId, f.finance_product_name financeProductName,f.finance_product_no financeProductNo,
+        f.finance_product_desc financeProductDesc, f.org_name orgName, f.finance_product_category financeProductCategory,
+        f.finance_limit financeLimit, f.valid_period validPeriod, f.create_time createTime,
+        f.modify_time modifyTime, f.remark,
+		case when t.fp_id IS NULL then  0 else 1 end isSigned 
+		from gf_finance_product f
+		left join ( 
+			select finance_product_id fp_id
+			from gf_user_finance where username =#{username}
+		) t on t.fp_id =f.finance_product_id
+		ORDER BY f.create_time DESC
+	</select>
+</mapper>

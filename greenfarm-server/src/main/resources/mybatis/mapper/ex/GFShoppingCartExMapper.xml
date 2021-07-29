@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callforcode.greenfarm.mapper.GFShoppingCartMapper">
+   <select id="selectByWhere" parameterType="java.util.List"
+	resultMap="BaseResultMap">
+	select 
+    <include refid="Base_Column_List" />
+    from gf_shopping_cart
+    <where>
+       <if test="username != null">
+        AND username = #{username,jdbcType=VARCHAR}
+      </if>
+      <if test="productId != null">
+       AND product_id = #{productId,jdbcType=INTEGER}
+      </if>
+      <if test="number != null">
+        AND number = #{number,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null">
+        AND create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="modifyTime != null">
+       AND modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="remark != null">
+       AND remark = #{remark,jdbcType=VARCHAR}
+      </if>
+    </where>
+       ORDER BY create_time DESC
+  </select>
+  
+  <select id="selectByUserName" parameterType="java.util.List"
+	resultType="com.callforcode.greenfarm.entity.GFShoppingCartProductTree">
+	select DISTINCT
+     cart.cart_id cartId, cart.username username, cart.product_id productId, 
+     cart.number, cart.create_time createTime,
+      cart.modify_time modifyTime, cart.remark,gp.price,gp.image_url imageUrl,
+      gp.product_name productName, gp.carbon_credit carbonCredit,gp.donate_amount donateAmount
+    from gf_shopping_cart cart
+    Left join gf_product gp on cart.product_id= gp.product_id
+    <where>
+       <if test="username != null">
+        AND cart.username = #{username,jdbcType=VARCHAR}
+      </if>
+      <if test="productId != null">
+       AND cart.product_id = #{productId,jdbcType=INTEGER}
+      </if>
+      <if test="number != null">
+        AND cart.number = #{number,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null">
+        AND cart.create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="modifyTime != null">
+       AND cart.modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+      </if>
+      <if test="remark != null">
+       AND cart.remark = #{remark,jdbcType=VARCHAR}
+      </if>
+    </where>
+       ORDER BY cart.create_time DESC
+  </select>
+  
+   <delete id="deleteByPidAndUserName" parameterType="com.callforcode.greenfarm.entity.GFShoppingCart">
+    delete from gf_shopping_cart
+    where product_id = #{productId,jdbcType=INTEGER}
+    and username = #{username,jdbcType=VARCHAR}
+  </delete>
+    <update id="updateByPidAndUserName" parameterType="com.callforcode.greenfarm.entity.GFShoppingCart">
+    update gf_shopping_cart
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=INTEGER},
+      </if>
+      <if test="number != null">
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where product_id = #{productId,jdbcType=INTEGER}
+    and username = #{username,jdbcType=VARCHAR}
+  </update>
+</mapper>

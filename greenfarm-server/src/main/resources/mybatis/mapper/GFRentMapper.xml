@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callforcode.greenfarm.mapper.GFRentMapper">
+  <resultMap id="BaseResultMap" type="com.callforcode.greenfarm.entity.GFRent">
+    <id column="rent_id" jdbcType="INTEGER" property="rentId" />
+    <result column="land_id" jdbcType="INTEGER" property="landId" />
+    <result column="farm_id" jdbcType="INTEGER" property="farmId" />
+    <result column="seed_id" jdbcType="INTEGER" property="seedId" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="rent_price" jdbcType="DECIMAL" property="rentPrice" />
+    <result column="area" jdbcType="INTEGER" property="area" />
+    <result column="rent_start_time" jdbcType="DATE" property="rentStartTime" />
+    <result column="rent_end_time" jdbcType="DATE" property="rentEndTime" />
+    <result column="confirm_crops" jdbcType="VARCHAR" property="confirmCrops" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    rent_id, land_id, farm_id, seed_id, username, rent_price, area, rent_start_time, 
+    rent_end_time, confirm_crops, create_time, modify_time, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gf_rent
+    where rent_id = #{rentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from gf_rent
+    where rent_id = #{rentId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="rent_id" keyProperty="rentId" parameterType="com.callforcode.greenfarm.entity.GFRent" useGeneratedKeys="true">
+    insert into gf_rent (land_id, farm_id, seed_id, 
+      username, rent_price, area, 
+      rent_start_time, rent_end_time, confirm_crops, 
+      create_time, modify_time, remark
+      )
+    values (#{landId,jdbcType=INTEGER}, #{farmId,jdbcType=INTEGER}, #{seedId,jdbcType=INTEGER}, 
+      #{username,jdbcType=VARCHAR}, #{rentPrice,jdbcType=DECIMAL}, #{area,jdbcType=INTEGER}, 
+      #{rentStartTime,jdbcType=DATE}, #{rentEndTime,jdbcType=DATE}, #{confirmCrops,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="rent_id" keyProperty="rentId" parameterType="com.callforcode.greenfarm.entity.GFRent" useGeneratedKeys="true">
+    insert into gf_rent
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="landId != null">
+        land_id,
+      </if>
+      <if test="farmId != null">
+        farm_id,
+      </if>
+      <if test="seedId != null">
+        seed_id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="rentPrice != null">
+        rent_price,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="rentStartTime != null">
+        rent_start_time,
+      </if>
+      <if test="rentEndTime != null">
+        rent_end_time,
+      </if>
+      <if test="confirmCrops != null">
+        confirm_crops,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="landId != null">
+        #{landId,jdbcType=INTEGER},
+      </if>
+      <if test="farmId != null">
+        #{farmId,jdbcType=INTEGER},
+      </if>
+      <if test="seedId != null">
+        #{seedId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="rentPrice != null">
+        #{rentPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=INTEGER},
+      </if>
+      <if test="rentStartTime != null">
+        #{rentStartTime,jdbcType=DATE},
+      </if>
+      <if test="rentEndTime != null">
+        #{rentEndTime,jdbcType=DATE},
+      </if>
+      <if test="confirmCrops != null">
+        #{confirmCrops,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.callforcode.greenfarm.entity.GFRent">
+    update gf_rent
+    <set>
+      <if test="landId != null">
+        land_id = #{landId,jdbcType=INTEGER},
+      </if>
+      <if test="farmId != null">
+        farm_id = #{farmId,jdbcType=INTEGER},
+      </if>
+      <if test="seedId != null">
+        seed_id = #{seedId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="rentPrice != null">
+        rent_price = #{rentPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=INTEGER},
+      </if>
+      <if test="rentStartTime != null">
+        rent_start_time = #{rentStartTime,jdbcType=DATE},
+      </if>
+      <if test="rentEndTime != null">
+        rent_end_time = #{rentEndTime,jdbcType=DATE},
+      </if>
+      <if test="confirmCrops != null">
+        confirm_crops = #{confirmCrops,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where rent_id = #{rentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.callforcode.greenfarm.entity.GFRent">
+    update gf_rent
+    set land_id = #{landId,jdbcType=INTEGER},
+      farm_id = #{farmId,jdbcType=INTEGER},
+      seed_id = #{seedId,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      rent_price = #{rentPrice,jdbcType=DECIMAL},
+      area = #{area,jdbcType=INTEGER},
+      rent_start_time = #{rentStartTime,jdbcType=DATE},
+      rent_end_time = #{rentEndTime,jdbcType=DATE},
+      confirm_crops = #{confirmCrops,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR}
+    where rent_id = #{rentId,jdbcType=INTEGER}
+  </update>
+</mapper>

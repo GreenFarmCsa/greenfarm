@@ -1,0 +1,1 @@
+delete from gf_live where live_id=199;

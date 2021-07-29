@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="40px" viewBox="0 0 48 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>Notification/Tip/Bottom/Left</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M37.7444592,4.14336123e-16 C41.3105342,-2.4074122e-16 42.6036791,0.371302445 43.9073828,1.06853082 C45.2110865,1.76575919 46.2342408,2.78891348 46.9314692,4.09261719 C47.6286976,5.39632089 48,6.68946584 48,10.2555408 L48,19.7444592 C48,23.3105342 47.6286976,24.6036791 46.9314692,25.9073828 C46.2342408,27.2110865 45.2110865,28.2342408 43.9073828,28.9314692 C42.6036791,29.6286976 41.3105342,30 37.7444592,30 L27,30 L19,40 L19,30 L10.2555408,30 C6.68946584,30 5.39632089,29.6286976 4.09261719,28.9314692 C2.78891348,28.2342408 1.76575919,27.2110865 1.06853082,25.9073828 C0.371302445,24.6036791 1.60494146e-16,23.3105342 -2.76224082e-16,19.7444592 L2.76224082e-16,10.2555408 C-1.60494146e-16,6.68946584 0.371302445,5.39632089 1.06853082,4.09261719 C1.76575919,2.78891348 2.78891348,1.76575919 4.09261719,1.06853082 C5.39632089,0.371302445 6.68946584,2.4074122e-16 10.2555408,-4.14336123e-16 L37.7444592,4.14336123e-16 Z" id="path-1"></path>
+        <linearGradient x1="37.7993866%" y1="40.0261972%" x2="98.4163851%" y2="65.6302896%" id="linearGradient-3">
+            <stop stop-color="#10C0E7" offset="0%"></stop>
+            <stop stop-color="#00B459" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="汇总" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="5首页备份" transform="translate(-129.000000, -555.000000)">
+            <g id="编组-13" transform="translate(15.000000, 495.000000)">
+                <g id="编组-11">
+                    <g id="编组-10" transform="translate(114.000000, 60.000000)">
+                        <g id="Notification/Tip/Bottom/Left">
+                            <mask id="mask-2" fill="white">
+                                <use xlink:href="#path-1"></use>
+                            </mask>
+                            <g id="template/tooltip-box"></g>
+                            <rect id="bg" fill="url(#linearGradient-3)" mask="url(#mask-2)" x="-44.14" y="-6.875" width="93.28" height="53"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

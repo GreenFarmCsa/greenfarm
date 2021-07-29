@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="6px" viewBox="0 0 10 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>caret-down</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M9.22088726,0.804255023 C9.55603357,0.360077239 9.38756036,8.45146487e-15 8.83033773,8.51970496e-15 L1.16530274,9.45840102e-15 C0.614461876,9.52585957e-15 0.44361185,0.359607914 0.774658669,0.791415439 L4.42956637,5.55876723 C4.76466047,5.99585391 5.30764356,5.99057476 5.64314399,5.54592765 L9.22088726,0.804255023 Z" id="path-1"></path>
+    </defs>
+    <g id="8-我的租赁" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="5登记租赁-农户" transform="translate(-122.000000, -576.000000)">
+            <g id="编组-16" transform="translate(15.000000, 450.000000)">
+                <g id="编组-11备份-2" transform="translate(1.000000, 83.000000)">
+                    <g id="caret-down" transform="translate(106.000000, 43.000000)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="01_PC/01_Basic/06_caret-down"></g>
+                        <g id="01_灰度/01_填充/N7-Text" mask="url(#mask-2)" fill="#646566">
+                            <g transform="translate(-4.000000, -6.000000)" id="矩形">
+                                <rect x="0" y="0" width="18" height="18"></rect>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

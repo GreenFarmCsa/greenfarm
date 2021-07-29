@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>编组 2</title>
+    <desc>Created with Sketch.</desc>
+    <g id="3-碳足迹" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1备份-2" transform="translate(-21.000000, -127.000000)">
+            <g id="编组-2" transform="translate(21.000000, 127.000000)">
+                <g id="barn-5">
+                    <path d="M17,7 C14.2385626,7 12,9.23856262 12,12 L22,12 C22,9.23856262 19.7614374,7 17,7" id="Shape" fill="#4CAF50"></path>
+                    <polygon id="Shape" fill="#81C784" points="12 22 22 22 22 12 12 12"></polygon>
+                    <path d="M5.00002178,10 C2.23848342,10 0,12.2384737 0,15 L10,15 C10.0000436,12.2384737 7.76156015,10 5.00002178,10" id="Shape" fill="#4CAF50"></path>
+                    <polygon id="Shape" fill="#81C784" points="0 22 10 22 10 15 0 15"></polygon>
+                    <path d="M14,4 L7,4 L7,3.33333963 C7,1.49232991 8.56694345,0 10.5,0 C12.4330565,0 14,1.49232991 14,3.33333963 L14,4 Z" id="Shape" fill="#ECE8D8"></path>
+                    <polygon id="Shape" fill="#C9C3A7" points="7 6 14 6 14 5 7 5"></polygon>
+                    <polygon id="Shape" fill="#FFFFFF" points="3 22 7 22 7 18 3 18"></polygon>
+                    <polygon id="Shape" fill="#FFFFFF" points="15 22 20 22 20 18 15 18"></polygon>
+                    <polygon id="Shape" fill="#81C784" points="4 13 6 13 6 12 4 12"></polygon>
+                    <path d="M4.74999292,21 L4.25000708,21 C4.11174988,21 4,20.7765066 4,20.5 C4,20.2234934 4.11174988,20 4.25000708,20 L4.74999292,20 C4.88825012,20 5,20.2234934 5,20.5 C4.99997168,20.7765066 4.8882218,21 4.74999292,21" id="Shape" fill="#A48164"></path>
+                    <path d="M7,6 L7,10.0510628 C8.82736433,10.6941113 10.150002,12.5588698 10.150002,14.7619181 L10.150002,22 L11.5499941,22 L11.5499941,12.0952586 C11.5499941,10.1223113 12.5366495,8.40384724 14,7.48115622 L14,6 L7,6 L7,6 Z" id="Shape" fill="#ECE8D8"></path>
+                    <polygon id="Shape" fill="#A48164" points="15 18 15 18.4386629 19.4514346 22 20 22 20 21.5613371 15.5485654 18"></polygon>
+                    <polygon id="Shape" fill="#A48164" points="20 18.4386629 20 18 19.4514346 18 15 21.5609973 15 22 15.5485654 22"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

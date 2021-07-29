@@ -1,10 +1,12 @@
+<img src="./docs/logo.png" width="20%" >
+
 # Green Farm
 
 *IBM : Call for Code 2021*
 
 **Green Farm is a tech-for-good, green and digital solution based on CSA which promotes the green agricultural production for small farmers, provides responsible produce for consumers. It is available for download on Apple Store.**
 
-*CSA : Community Supported Agriculture. CSA regularly provides consumers with fresh products from local farms. It is a sustainable alternative to industrial agriculture*
+> CSA: Community Supported Agriculture. CSA regularly provides consumers with fresh products from local farms. It is a sustainable alternative to industrial agriculture.
 
 ## Contents
 
@@ -48,11 +50,10 @@ The SDGs(Sustainable Development Goals) adopted by the United Nations include "C
 
 ## Demo video
 
-[![Watch the video](https://github.com/GreenFarmCsa/greenfarm/blob/main/Youtube_video.jpg)](https://youtu.be/vOgCOoy_Bx0)
+[![Watch the video](./docs/Youtube_video.jpg)](https://youtu.be/vOgCOoy_Bx0)
 
 ## The architecture
-
-![Green Farm architecture](https://github.com/GreenFarmCsa/greenfarm/blob/main/architecture-greenfarm.jpg)
+![Green Farm Functional Architecture](./docs/functional-architecture.png)
 
 1. Farmers measure the unoccupied lands by AR and leased them.
 2. Consumers browse the farm by VR and subscribe to the CSA box or even rent lands.
@@ -61,43 +62,53 @@ The SDGs(Sustainable Development Goals) adopted by the United Nations include "C
 5. The app gets farms info from IBM Mysql and gets planting instructions from the FAO database.
 6. Farmers use app to record planting info. The info will be stored on IBM Blockchain platform to ensure the credibility and traceability of the planting data.
 
+![Green Farm Technical Architecture](./docs/technical-architecture.png)
 
 ## Long description
 
-[More detail is available here](https://github.com/GreenFarmCsa/greenfarm/blob/main/Long%20Description_Green%20Farm.md)
+[More detail is available here](./docs/Long%20Description_Green%20Farm.md)
 
 ## Project roadmap
 
-![Roadmap](https://github.com/GreenFarmCsa/greenfarm/blob/main/roadmap.jpg)
+![Roadmap](./docs/roadmap.png)
 
 1. In July 2021, Green Farm iOS version has been released to help small farms better operate with CSA philosophy, support land subscription and lease, keep photos and videos of planting activities, and livestream agricultural production activities.  It supports online sales of produce and user reviews, post creation and share in the farm community; It also supports tracking planting activities from IBM blockchain and converting them into carbon credits. Green Farm recommends farms, produce and green financial products to users through machine learning and federated learning.
 
-2. In December 2021, Android version will be available for download. It integrates real-time weather data and improves machine learning and federal learning models, to help small farmers better practice low-carbon and green planting. The updated version also cooperates with public welfare organizations to omplete green planting donations and carbon offset, thus encouraging CSA users to cultivate a low-carbon lifestyle.
+2. In December 2021, Android version will be available for download. More financial institutions will join the federated Learning network, Green Farm will integrate real-time weather data and improve machine learning and federal learning models, to help small farmers better practice low-carbon and green planting. The updated version also cooperates with public welfare organizations to omplete green planting donations and carbon offset, thus encouraging CSA users to cultivate a low-carbon lifestyle.
 
 3. In June 2022, Green Farm will be introduced to more farms in more regions, supporting the green planting data of more crops and the tracking of more carbon behaviors, to further improve the green planting guidance function. Moreover, it will connect with the local food safety certification, and help more farmers and consumers join CSA more conveniently and enjoy green, fresh and credible produce.
 
 ## Getting started
+You can find a deployed App on Apple App store. Click and [download](https://apps.apple.com/cn/app/id1576617731). 
 
-[Getting Started](https://github.com/GreenFarmCsa/greenfarm/blob/main/get%20started.md)
+The GreenFarm project consists of four modules: `greenfarm-server`, `greenfarm-frontend`, `greenfamr-ios` and `greenfarm-ai`. Each module is built and packaged as follows:
+- [greenfarm-server](./greenfarm-server/README.md)
+- [greenfarm-frontend](./greenfarm-frontend/README.md)
+- [greenfarm-ios](./greenfarm-ios/README.md)
+- [greenfarm-ai](./greenfarm-ai/README.md)
 
 ## Live demo
-
-You can find a deployed app on App store. For more details, see [Getting started](#getting-started). 
+In the linked video below, we show all the functions of the APP, including farm addition, land subscription and lease, planting activity management, agricultural products display, purchase, community Posting and reply, etc.
+- [Demo1](https://youtu.be/yHzeREG7658) 
+- [Demo2](https://youtu.be/GOU8UZwALRA)
 
 ## Built with
 
 - [IBM Blockchain Platform](https://cloud.ibm.com/catalog?search=Blockchain%20Platform#search_results) - The backend application used
 - [IBM Waston](https://www.ibm.com/watson) - The recommendation logic
 - [IBM Cloud object storage](https://cloud.ibm.com/catalog?search=object%20storage#search_results) - The backend application used
-- [Live Streaming]() - The ios app used
-- [AR]() - The ios app used
-- [VR]() - The ios app used
-- [Maven](https://maven.apache.org/) - Dependency management
+- [AR Ruler](https://github.com/TBXark/Ruler) Measure area using ARKit.
+- [VR Photo](https://github.com/robbykraft/Panorama) OpenGL is used for image stitching and 2D - 3D conversing.
+- [Live Audience](https://github.com/bilibili/ijkplayer) Video player based on FFmpeg, with MediaCodec support.
+- [Live Anchor](https://github.com/LaiFengiOS/LFLiveKit) Live streaming uses LFLiveKit.
+- [Maven](https://maven.apache.org/) - Java Dependency management
+- [NPM](https://www.npmjs.com)  NodeJS package management
+- [Xcode](https://developer.apple.com/xcode)  iOS app development IDE
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/GreenFarmCsa/greenfarm/blob/main/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## License
 
-This project is licensed under the Apache 2 License - see the [LICENSE](https://github.com/GreenFarmCsa/greenfarm/blob/main/LICENSE) file for details.
+This project is licensed under the Apache 2 License - see the [LICENSE](./LICENSE) file for details.

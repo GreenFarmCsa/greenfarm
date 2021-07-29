@@ -1,0 +1,8 @@
+{
+  "file": "examples/data/credit_host_nor.csv",
+  "head": 1,
+  "partition": 10,
+  "work_mode": 1,
+  "table_name": "hetero_credit_host",
+  "namespace": "hetero_credit_host"
+}

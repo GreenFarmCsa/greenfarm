@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callforcode.greenfarm.mapper.GFLandMapper">
+  <resultMap id="BaseResultMap" type="com.callforcode.greenfarm.entity.GFLand">
+    <id column="land_id" jdbcType="INTEGER" property="landId" />
+    <result column="farm_id" jdbcType="INTEGER" property="farmId" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="is_rent" jdbcType="BIT" property="isRent" />
+    <result column="suited_crops" jdbcType="VARCHAR" property="suitedCrops" />
+    <result column="area" jdbcType="INTEGER" property="area" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    land_id, farm_id, price, is_rent, suited_crops, area, create_time, modify_time, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gf_land
+    where land_id = #{landId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from gf_land
+    where land_id = #{landId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="land_id" keyProperty="landId" parameterType="com.callforcode.greenfarm.entity.GFLand" useGeneratedKeys="true">
+    insert into gf_land (farm_id, price, is_rent, 
+      suited_crops, area, create_time, 
+      modify_time, remark)
+    values (#{farmId,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, #{isRent,jdbcType=BIT}, 
+      #{suitedCrops,jdbcType=VARCHAR}, #{area,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="land_id" keyProperty="landId" parameterType="com.callforcode.greenfarm.entity.GFLand" useGeneratedKeys="true">
+    insert into gf_land
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="farmId != null">
+        farm_id,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="isRent != null">
+        is_rent,
+      </if>
+      <if test="suitedCrops != null">
+        suited_crops,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="farmId != null">
+        #{farmId,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="isRent != null">
+        #{isRent,jdbcType=BIT},
+      </if>
+      <if test="suitedCrops != null">
+        #{suitedCrops,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.callforcode.greenfarm.entity.GFLand">
+    update gf_land
+    <set>
+      <if test="farmId != null">
+        farm_id = #{farmId,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="isRent != null">
+        is_rent = #{isRent,jdbcType=BIT},
+      </if>
+      <if test="suitedCrops != null">
+        suited_crops = #{suitedCrops,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where land_id = #{landId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.callforcode.greenfarm.entity.GFLand">
+    update gf_land
+    set farm_id = #{farmId,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL},
+      is_rent = #{isRent,jdbcType=BIT},
+      suited_crops = #{suitedCrops,jdbcType=VARCHAR},
+      area = #{area,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR}
+    where land_id = #{landId,jdbcType=INTEGER}
+  </update>
+</mapper>

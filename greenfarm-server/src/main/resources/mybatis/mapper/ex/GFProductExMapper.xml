@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callforcode.greenfarm.mapper.GFProductMapper">
+    <resultMap id="OrderRlnProductMap" type="com.callforcode.greenfarm.dto.GFOrderCartRlnProductDTO">
+        <result column="product_id" jdbcType="INTEGER" property="productId" />
+        <result column="farm_id" jdbcType="INTEGER" property="farmId" />
+        <result column="username" jdbcType="VARCHAR" property="plantername" />
+        <result column="product_name" jdbcType="VARCHAR" property="productName" />
+        <result column="category" jdbcType="VARCHAR" property="category" />
+        <result column="price" jdbcType="DECIMAL" property="price" />
+        <result column="carbon_credit" jdbcType="INTEGER" property="carbonCredit" />
+        <result column="number" jdbcType="INTEGER" property="number" />
+        <result column="sale_number" jdbcType="INTEGER" property="saleNumber" />
+        <result column="identifications" jdbcType="VARCHAR" property="identifications" />
+        <result column="carbon_emission" jdbcType="DECIMAL" property="carbonEmission" />
+        <result column="donate_amount" jdbcType="DECIMAL" property="donateAmount" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+        <result column="username" jdbcType="TIMESTAMP" property="username" />
+        <result column="order_id" jdbcType="VARCHAR" property="orderId" />
+    </resultMap>
+    <select id="selectOrderRlnProductInfo"  resultMap="OrderRlnProductMap">
+       select gp.product_id, gp.farm_id, gp.land_id, gp.username as plantername, gp.product_name, gp.category,
+       gp.price, gp.carbon_credit, gp.number, gp.sale_number,  gp.identifications, gp.carbon_emission,
+       gp.donate_amount, gp.create_time, gp.modify_time,go.username,go.order_id
+        from gf_order_detail god
+        inner join gf_order go  on god.order_id=go.order_id
+        inner join gf_product gp on god.product_id = gp.product_id
+    </select>
+
+    <select id="selectCartRlnProductInfo" parameterType="string" resultMap="BaseResultMap">
+
+        select
+        <include refid="Base_Column_List"/>
+        from
+        gf_product gp
+        where exists (
+        select 1 from gf_shopping_cart gsc where gsc.product_id =gp.product_id
+        <if test="userName != null">
+            and gsc.username =#{userName,jdbcType=VARCHAR}
+        </if>
+        )
+    </select>
+
+    <select id="selectBySearchText" parameterType="java.util.List" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+          ,
+        <include refid="Blob_Column_List"/>
+        from gf_product
+        <where>
+            <if test="searchText != null">
+                OR farm_id = #{searchText}
+            </if>
+            <if test="searchText != null">
+                OR UPPER(username) like UPPER(CONCAT('%',#{searchText},'%'))
+            </if>
+            <if test="searchText != null">
+                OR  UPPER(product_name) like UPPER(CONCAT('%',#{searchText},'%'))
+            </if>
+        </where>
+    </select>
+    
+ 	<select id="queryProductById" parameterType="java.util.List" resultMap="ResultMapWithBLOBs">
+    	select 
+    	<include refid="Base_Column_List" />
+    	  ,
+        <include refid="Blob_Column_List"/>
+    	from gf_product
+    	where product_id = #{productId,jdbcType=INTEGER}
+  	</select>
+ 	<select id="queryProductByFarmId" parameterType="java.util.List" resultMap="ResultMapWithBLOBs">
+    	select 
+    	<include refid="Base_Column_List" />
+    	  ,
+        <include refid="Blob_Column_List"/>
+    	from gf_product
+    	where farm_id = #{farmId,jdbcType=INTEGER}
+  	</select> 
+    <select id="selectByWhere" parameterType="java.util.List" resultMap="ResultMapWithBLOBs">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from gf_product
+        <where>
+            <if test="productId != null">
+                AND product_id = #{productId,jdbcType=INTEGER}
+            </if>
+            <if test="farmId != null">
+                AND farm_id = #{farmId,jdbcType=INTEGER}
+            </if>
+            <if test="landId != null">
+                AND land_id = #{landId,jdbcType=INTEGER}
+            </if>
+            <if test="username != null">
+                AND username = #{username,jdbcType=VARCHAR}
+            </if>
+            <if test="productName != null">
+                AND product_name = #{productName,jdbcType=VARCHAR}
+            </if>
+            <if test="category != null">
+                AND category = #{category,jdbcType=VARCHAR}
+            </if>
+            <if test="introduction != null">
+                AND introduction = #{introduction,jdbcType=VARCHAR}
+            </if>
+            <if test="introduction != null">
+                AND weight = #{weight,jdbcType=VARCHAR}
+            </if>
+            <if test="price != null">
+                AND price = #{price,jdbcType=INTEGER}
+            </if>
+            <if test="carbonCredit != null">
+                AND carbon_credit = #{carbonCredit,jdbcType=INTEGER}
+            </if>
+            <if test="number != null">
+                AND number = #{number,jdbcType=INTEGER}
+            </if>
+            <if test="saleNumber != null">
+                AND sale_number = #{saleNumber,jdbcType=INTEGER}
+            </if>
+            <if test="likeNumber != null">
+                AND like_number = #{likeNumber,jdbcType=INTEGER}
+            </if>
+            <if test="identifications != null">
+                AND identifications = #{identifications,jdbcType=VARCHAR}
+            </if>
+            <if test="carbonEmission != null">
+                AND carbon_emission = #{carbonEmission,jdbcType=INTEGER}
+            </if>
+            <if test="donateAmount != null">
+                AND donate_amount = #{donateAmount,jdbcType=INTEGER}
+            </if>
+            <if test="createTime != null">
+                AND create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="modifyTime != null">
+                AND modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="remark != null">
+                AND remark = #{remark,jdbcType=VARCHAR}
+            </if>
+            <if test="imageUrl != null">
+                AND image_url = #{imageUrl,jdbcType=LONGVARCHAR}
+            </if>
+            <if test="vedioUrl != null">
+                AND vedio_url = #{vedioUrl,jdbcType=LONGVARCHAR}
+            </if>
+        </where>
+        ORDER BY sale_number DESC,create_time DESC
+    </select>
+    <select id="queryProductByCommentator" parameterType="string" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from gf_product gp
+        where exists(
+        select 1 from gf_product_comment gpc
+        where gpc.product_id =gp.product_id and gpc.username =#{userName,jdbcType=VARCHAR}
+        )
+    </select>
+</mapper>

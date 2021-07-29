@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callforcode.greenfarm.mapper.GFUserFinanceMapper">
+  <resultMap id="BaseResultMap" type="com.callforcode.greenfarm.entity.GFUserFinance">
+    <id column="user_finance_id" jdbcType="INTEGER" property="userFinanceId" />
+    <result column="finance_product_id" jdbcType="INTEGER" property="financeProductId" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="finance_limit" jdbcType="VARCHAR" property="financeLimit" />
+    <result column="start_date" jdbcType="DATE" property="startDate" />
+    <result column="end_date" jdbcType="DATE" property="endDate" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_finance_id, finance_product_id, username, finance_limit, start_date, end_date, 
+    create_time, modify_time, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gf_user_finance
+    where user_finance_id = #{userFinanceId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from gf_user_finance
+    where user_finance_id = #{userFinanceId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="user_finance_id" keyProperty="userFinanceId" parameterType="com.callforcode.greenfarm.entity.GFUserFinance" useGeneratedKeys="true">
+    insert into gf_user_finance (finance_product_id, username, finance_limit, 
+      start_date, end_date, create_time, 
+      modify_time, remark)
+    values (#{financeProductId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{financeLimit,jdbcType=VARCHAR}, 
+      #{startDate,jdbcType=DATE}, #{endDate,jdbcType=DATE}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="user_finance_id" keyProperty="userFinanceId" parameterType="com.callforcode.greenfarm.entity.GFUserFinance" useGeneratedKeys="true">
+    insert into gf_user_finance
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="financeProductId != null">
+        finance_product_id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="financeLimit != null">
+        finance_limit,
+      </if>
+      <if test="startDate != null">
+        start_date,
+      </if>
+      <if test="endDate != null">
+        end_date,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="financeProductId != null">
+        #{financeProductId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="financeLimit != null">
+        #{financeLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null">
+        #{startDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null">
+        #{endDate,jdbcType=DATE},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.callforcode.greenfarm.entity.GFUserFinance">
+    update gf_user_finance
+    <set>
+      <if test="financeProductId != null">
+        finance_product_id = #{financeProductId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="financeLimit != null">
+        finance_limit = #{financeLimit,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null">
+        start_date = #{startDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null">
+        end_date = #{endDate,jdbcType=DATE},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_finance_id = #{userFinanceId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.callforcode.greenfarm.entity.GFUserFinance">
+    update gf_user_finance
+    set finance_product_id = #{financeProductId,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      finance_limit = #{financeLimit,jdbcType=VARCHAR},
+      start_date = #{startDate,jdbcType=DATE},
+      end_date = #{endDate,jdbcType=DATE},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR}
+    where user_finance_id = #{userFinanceId,jdbcType=INTEGER}
+  </update>
+</mapper>

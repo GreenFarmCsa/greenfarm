@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callforcode.greenfarm.mapper.GFLikeMapper">
+
+  <select id="queryGFLikeByUserNameAndTopicId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from gf_like
+    where username = #{userName,jdbcType=VARCHAR} and topic_id = #{topicId,jdbcType=INTEGER}
+  </select>
+  <insert id="insertByProduct" keyColumn="like_id" keyProperty="likeId" parameterType="com.callforcode.greenfarm.entity.GFLike" useGeneratedKeys="true">
+    insert into gf_like
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        username,
+      </if>
+      <if test="topicId != null">
+        topic_id,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="topicId != null">
+        #{topicId,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteByUsernameAndProductId" parameterType="java.util.List">
+    delete from gf_like
+    where username = #{username,jdbcType=VARCHAR} and product_id = #{productId,jdbcType=INTEGER}
+  </delete>
+  
+  <select id="selectByUsernameAndProductId" parameterType="java.util.List" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gf_like
+    where username = #{username,jdbcType=VARCHAR} and product_id = #{productId,jdbcType=INTEGER}
+  </select>
+</mapper>

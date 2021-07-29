@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="70px" height="70px" viewBox="0 0 70 70" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60.1 (88133) - https://sketch.com -->
+    <title>编组 17</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="70" height="70" rx="4"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="70" height="70" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="8-我的租赁" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="5登记租赁-农户" transform="translate(-16.000000, -242.000000)">
+            <g id="编组-17" transform="translate(16.000000, 242.000000)">
+                <g id="编组" fill="#F9F9F9" stroke="#B9B8B8" stroke-dasharray="4,3" stroke-width="2">
+                    <use id="矩形备份" mask="url(#mask-2)" xlink:href="#path-1"></use>
+                </g>
+                <g id="编组" transform="translate(22.000000, 22.000000)" fill="#909090" fill-rule="nonzero">
+                    <path d="M12.9714527,25.897065 C12.1984797,25.897065 11.5660473,25.2646326 11.5660473,24.4916596 L11.5660473,1.42544341 C11.5660473,0.652470439 12.1984797,0.0200380068 12.9714527,0.0200380068 C13.7444257,0.0200380068 14.3768581,0.652470439 14.3768581,1.42544341 L14.3768581,24.4916596 C14.3768581,25.2646326 13.7444257,25.897065 12.9714527,25.897065 Z" id="路径"></path>
+                    <path d="M24.5133446,14.3551731 L1.42956081,14.3551731 C0.656587838,14.3551731 0.0241554054,13.7227407 0.0241554054,12.9497677 C0.0241554054,12.1767948 0.656587838,11.5443623 1.42956081,11.5443623 L24.495777,11.5443623 C25.26875,11.5443623 25.9011824,12.1767948 25.9011824,12.9497677 C25.9011824,13.7227407 25.2863176,14.3551731 24.5133446,14.3551731 Z" id="路径"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

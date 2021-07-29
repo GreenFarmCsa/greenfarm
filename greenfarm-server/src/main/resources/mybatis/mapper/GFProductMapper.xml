@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callforcode.greenfarm.mapper.GFProductMapper">
+  <resultMap id="BaseResultMap" type="com.callforcode.greenfarm.entity.GFProduct">
+    <id column="product_id" jdbcType="INTEGER" property="productId" />
+    <result column="farm_id" jdbcType="INTEGER" property="farmId" />
+    <result column="land_id" jdbcType="INTEGER" property="landId" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="product_name" jdbcType="VARCHAR" property="productName" />
+    <result column="category" jdbcType="VARCHAR" property="category" />
+    <result column="introduction" jdbcType="VARCHAR" property="introduction" />
+    <result column="weight" jdbcType="VARCHAR" property="weight" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="carbon_credit" jdbcType="INTEGER" property="carbonCredit" />
+    <result column="number" jdbcType="INTEGER" property="number" />
+    <result column="sale_number" jdbcType="INTEGER" property="saleNumber" />
+    <result column="like_number" jdbcType="INTEGER" property="likeNumber" />
+    <result column="identifications" jdbcType="VARCHAR" property="identifications" />
+    <result column="carbon_emission" jdbcType="DECIMAL" property="carbonEmission" />
+    <result column="donate_amount" jdbcType="DECIMAL" property="donateAmount" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.callforcode.greenfarm.entity.GFProductWithBLOBs">
+    <result column="image_url" jdbcType="LONGVARCHAR" property="imageUrl" />
+    <result column="vedio_url" jdbcType="LONGVARCHAR" property="vedioUrl" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    product_id, farm_id, land_id, username, product_name, category, introduction, weight, 
+    price, carbon_credit, number, sale_number, like_number, identifications, carbon_emission, 
+    donate_amount, create_time, modify_time, remark
+  </sql>
+  <sql id="Blob_Column_List">
+    image_url, vedio_url
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from gf_product
+    where product_id = #{productId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from gf_product
+    where product_id = #{productId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="product_id" keyProperty="productId" parameterType="com.callforcode.greenfarm.entity.GFProductWithBLOBs" useGeneratedKeys="true">
+    insert into gf_product (farm_id, land_id, username, 
+      product_name, category, introduction, 
+      weight, price, carbon_credit, 
+      number, sale_number, like_number, 
+      identifications, carbon_emission, donate_amount, 
+      create_time, modify_time, remark, 
+      image_url, vedio_url)
+    values (#{farmId,jdbcType=INTEGER}, #{landId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, 
+      #{productName,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR}, #{introduction,jdbcType=VARCHAR}, 
+      #{weight,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, #{carbonCredit,jdbcType=INTEGER}, 
+      #{number,jdbcType=INTEGER}, #{saleNumber,jdbcType=INTEGER}, #{likeNumber,jdbcType=INTEGER}, 
+      #{identifications,jdbcType=VARCHAR}, #{carbonEmission,jdbcType=DECIMAL}, #{donateAmount,jdbcType=DECIMAL}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, 
+      #{imageUrl,jdbcType=LONGVARCHAR}, #{vedioUrl,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="product_id" keyProperty="productId" parameterType="com.callforcode.greenfarm.entity.GFProductWithBLOBs" useGeneratedKeys="true">
+    insert into gf_product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="farmId != null">
+        farm_id,
+      </if>
+      <if test="landId != null">
+        land_id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="productName != null">
+        product_name,
+      </if>
+      <if test="category != null">
+        category,
+      </if>
+      <if test="introduction != null">
+        introduction,
+      </if>
+      <if test="weight != null">
+        weight,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="carbonCredit != null">
+        carbon_credit,
+      </if>
+      <if test="number != null">
+        number,
+      </if>
+      <if test="saleNumber != null">
+        sale_number,
+      </if>
+      <if test="likeNumber != null">
+        like_number,
+      </if>
+      <if test="identifications != null">
+        identifications,
+      </if>
+      <if test="carbonEmission != null">
+        carbon_emission,
+      </if>
+      <if test="donateAmount != null">
+        donate_amount,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="imageUrl != null">
+        image_url,
+      </if>
+      <if test="vedioUrl != null">
+        vedio_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="farmId != null">
+        #{farmId,jdbcType=INTEGER},
+      </if>
+      <if test="landId != null">
+        #{landId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null">
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null">
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null">
+        #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null">
+        #{weight,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="carbonCredit != null">
+        #{carbonCredit,jdbcType=INTEGER},
+      </if>
+      <if test="number != null">
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="saleNumber != null">
+        #{saleNumber,jdbcType=INTEGER},
+      </if>
+      <if test="likeNumber != null">
+        #{likeNumber,jdbcType=INTEGER},
+      </if>
+      <if test="identifications != null">
+        #{identifications,jdbcType=VARCHAR},
+      </if>
+      <if test="carbonEmission != null">
+        #{carbonEmission,jdbcType=DECIMAL},
+      </if>
+      <if test="donateAmount != null">
+        #{donateAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUrl != null">
+        #{imageUrl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="vedioUrl != null">
+        #{vedioUrl,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.callforcode.greenfarm.entity.GFProductWithBLOBs">
+    update gf_product
+    <set>
+      <if test="farmId != null">
+        farm_id = #{farmId,jdbcType=INTEGER},
+      </if>
+      <if test="landId != null">
+        land_id = #{landId,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null">
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null">
+        category = #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="introduction != null">
+        introduction = #{introduction,jdbcType=VARCHAR},
+      </if>
+      <if test="weight != null">
+        weight = #{weight,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="carbonCredit != null">
+        carbon_credit = #{carbonCredit,jdbcType=INTEGER},
+      </if>
+      <if test="number != null">
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="saleNumber != null">
+        sale_number = #{saleNumber,jdbcType=INTEGER},
+      </if>
+      <if test="likeNumber != null">
+        like_number = #{likeNumber,jdbcType=INTEGER},
+      </if>
+      <if test="identifications != null">
+        identifications = #{identifications,jdbcType=VARCHAR},
+      </if>
+      <if test="carbonEmission != null">
+        carbon_emission = #{carbonEmission,jdbcType=DECIMAL},
+      </if>
+      <if test="donateAmount != null">
+        donate_amount = #{donateAmount,jdbcType=DECIMAL},
+      </if>
+     <!--  <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if> -->
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUrl != null">
+        image_url = #{imageUrl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="vedioUrl != null">
+        vedio_url = #{vedioUrl,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where product_id = #{productId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.callforcode.greenfarm.entity.GFProductWithBLOBs">
+    update gf_product
+    set farm_id = #{farmId,jdbcType=INTEGER},
+      land_id = #{landId,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      product_name = #{productName,jdbcType=VARCHAR},
+      category = #{category,jdbcType=VARCHAR},
+      introduction = #{introduction,jdbcType=VARCHAR},
+      weight = #{weight,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      carbon_credit = #{carbonCredit,jdbcType=INTEGER},
+      number = #{number,jdbcType=INTEGER},
+      sale_number = #{saleNumber,jdbcType=INTEGER},
+      like_number = #{likeNumber,jdbcType=INTEGER},
+      identifications = #{identifications,jdbcType=VARCHAR},
+      carbon_emission = #{carbonEmission,jdbcType=DECIMAL},
+      donate_amount = #{donateAmount,jdbcType=DECIMAL},
+      <!-- create_time = #{createTime,jdbcType=TIMESTAMP}, -->
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      image_url = #{imageUrl,jdbcType=LONGVARCHAR},
+      vedio_url = #{vedioUrl,jdbcType=LONGVARCHAR}
+    where product_id = #{productId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.callforcode.greenfarm.entity.GFProduct">
+    update gf_product
+    set farm_id = #{farmId,jdbcType=INTEGER},
+      land_id = #{landId,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      product_name = #{productName,jdbcType=VARCHAR},
+      category = #{category,jdbcType=VARCHAR},
+      introduction = #{introduction,jdbcType=VARCHAR},
+      weight = #{weight,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      carbon_credit = #{carbonCredit,jdbcType=INTEGER},
+      number = #{number,jdbcType=INTEGER},
+      sale_number = #{saleNumber,jdbcType=INTEGER},
+      like_number = #{likeNumber,jdbcType=INTEGER},
+      identifications = #{identifications,jdbcType=VARCHAR},
+      carbon_emission = #{carbonEmission,jdbcType=DECIMAL},
+      donate_amount = #{donateAmount,jdbcType=DECIMAL},
+      <!-- create_time = #{createTime,jdbcType=TIMESTAMP}, -->
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR}
+    where product_id = #{productId,jdbcType=INTEGER}
+  </update>
+</mapper>

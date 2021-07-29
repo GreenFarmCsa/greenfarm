@@ -1,0 +1,132 @@
+html, body, div, p{
+  margin: 0;
+  padding: 0;
+}
+.home {
+  /* width: 1142px; */
+}
+.home .top {
+  height: 60px;
+  width: 100%;
+  background: #F6F6F6;
+  display: flex;
+  align-items: center;
+}
+.home .top img{
+  padding-left: 80px;
+  cursor: pointer;
+}
+.home .img {
+  height: 675px;
+  background-image: url("./img/background.png");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+.home .img .img-title{
+  padding-top: 181px;
+  font-family: PingFangSC-Regular;
+  font-size: 44px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  text-align: center;
+  line-height: 44px;
+  font-weight: 600;
+}
+.home .img .img-content{
+  padding: 45px;
+  font-family: PingFangSC-Regular;
+  font-size: 26px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  text-align: center;
+  line-height: 40px;
+}
+.home .content {
+  height:  601px;
+  background: #FCFCFC;
+}
+.home .content .content-title {
+  padding-top: 40px;
+  font-family: PingFangSC-Semibold;
+  font-size: 40px;
+  color: #333333;
+  letter-spacing: 0;
+  text-align: center;
+  line-height: 40px;
+  font-weight: 600;
+}
+.home .content .content-item-wrapper {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+.home .content .content-item-wrapper .content-item {
+  width: 330px;
+  height: 370px;
+  padding: 36px;
+  margin: 40px 20px;
+  background: #FFFFFF;
+  box-shadow: 0 6px 12px 0 rgba(207,207,208,0.32);
+  border-radius: 20px;
+  border-radius: 20px;
+}
+.home .content .content-item-wrapper .content-item .content-item-img{
+  height: 100px;
+  width: 100px;
+  margin: 0 auto;
+}
+.home .content .content-item-wrapper .content-item .content-item-title{
+  font-family: PingFangSC-Semibold;
+  font-size: 24px;
+  color: #333333;
+  letter-spacing: 0;
+  line-height: 24px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 21px;
+  font-weight: 600;
+}
+.home .content .content-item-wrapper .content-item .content-item-info{
+  font-family: PingFangSC-Regular;
+  font-size: 16px;
+  color: #85848E;
+  letter-spacing: 0;
+  line-height: 26px;
+}
+.home .bottom {
+  height: 80px;
+  background: #F0F0F0;
+}
+.home .bottom .bottom-wrapper {
+  height: 80px;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  /* align-items: center; */
+}
+.home .bottom .bottom-wrapper .font {
+  font-family: PingFangSC-Regular;
+  font-size: 16px;
+  color: #636363;
+  letter-spacing: 0;
+  padding: 32px 0;
+}
+
+.home .bottom .bottom-wrapper .font .click:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+.home .bottom .bottom-wrapper .git {
+  width: 19px;
+  height: 18px;
+  padding: 31px 0;
+
+}
+.home .bottom .bottom-wrapper .github-logo {
+  margin-left: 10px;
+}
+.home .bottom .bottom-wrapper .github-logo:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}

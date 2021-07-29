@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callforcode.greenfarm.mapper.GFRentMapper">
+    <select id="queryByUserName" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from gf_rent
+        where username = #{username,jdbcType=VARCHAR}
+    </select>
+
+    <select id="queryAllRentLands"  resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from gf_rent
+        order by rent_start_time desc
+    </select>
+
+    <select id="queryRentLandsByUsernameAndFarmId" resultMap="BaseResultMap">
+
+        select
+        <include refid="Base_Column_List"/>
+        from gf_rent
+        where username = #{userName,jdbcType=VARCHAR}
+              and farm_id=#{farmId,jdbcType=INTEGER}
+    </select>
+    <select id="querySubscribeByLandId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from gf_rent
+        where land_id = #{landId,jdbcType=INTEGER} and remark = 'subscribe'
+    </select>
+
+</mapper>

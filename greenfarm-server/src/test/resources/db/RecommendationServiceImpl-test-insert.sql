@@ -1,0 +1,8 @@
+INSERT INTO gf_land (land_id,farm_id, is_rent, suited_crops, area, create_time, modify_time, remark, price) VALUES (888,555, 3, '3', null, now(), now(), 'remark-test', 566);
+INSERT INTO gf_farm (farm_id,farm_name, introduction, username, total_area, idle_area, location, icon_url, rent_period, create_time, modify_time, remark, suited_crops, latitude_longitude, image_url, vr_url) values (555,'test','test','test',12,12,'test','test','test',now(),now(),'test','test','test','test','test');
+INSERT INTO gf_product (product_id,farm_id, land_id, username,  product_name, category, introduction,  weight, price, carbon_credit,
+      number, sale_number, like_number,  identifications, carbon_emission, donate_amount,  create_time, modify_time, remark, image_url, vedio_url)
+    VALUES (1000,555, 888, 'test-product',   'test', 'c', 'test',  'test', 5, 6,  7, 8, 9,  'test', 4, 3,  now(),now(), 'test',   'a.png,b.png','test');
+INSERT INTO gf_product_comment (comment_id, product_id, username, comment_content, comment_image, create_time, modify_time, remark) VALUES (1234, 1000, 'jack', 'this is a test', '/image/1000.jpg', now(), now(), 'test-remark');
+INSERT INTO gf_order_detail (order_id, product_id, amount, create_time, modify_time, remark) VALUES (777, 1000, 54, '2021-07-01 18:16:30', null, 'test-remark');
+INSERT INTO gf_order (order_id,username, address, money, carbon_credit, create_time, modify_time, remark) VALUES (777,'jack', 'test-address', 66666, 455555, null, null, 'test-remark');

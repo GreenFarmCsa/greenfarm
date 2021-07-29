@@ -1,0 +1,1 @@
+insert into gf_live(live_id,farm_id,step_id,username,status,create_time,modify_time,tick_time,remark)values(199,199,199,'test','test',now(),now(),now(),'test')

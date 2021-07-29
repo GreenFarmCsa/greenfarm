@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callforcode.greenfarm.mapper.GFCarbonCreditDailyMapper">
+  <resultMap id="BaseResultMap" type="com.callforcode.greenfarm.entity.GFCarbonCreditDaily">
+    <id column="credit_daily_id" jdbcType="INTEGER" property="creditDailyId" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="carbon_credit" jdbcType="INTEGER" property="carbonCredit" />
+    <result column="carbon_date" jdbcType="DATE" property="carbonDate" />
+    <result column="type" jdbcType="CHAR" property="type" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    credit_daily_id, username, carbon_credit, carbon_date, type
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from gf_carbon_credit_daily
+    where credit_daily_id = #{creditDailyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from gf_carbon_credit_daily
+    where credit_daily_id = #{creditDailyId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="credit_daily_id" keyProperty="creditDailyId" parameterType="com.callforcode.greenfarm.entity.GFCarbonCreditDaily" useGeneratedKeys="true">
+    insert into gf_carbon_credit_daily (username, carbon_credit, carbon_date, 
+      type)
+    values (#{username,jdbcType=VARCHAR}, #{carbonCredit,jdbcType=INTEGER}, #{carbonDate,jdbcType=DATE}, 
+      #{type,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="credit_daily_id" keyProperty="creditDailyId" parameterType="com.callforcode.greenfarm.entity.GFCarbonCreditDaily" useGeneratedKeys="true">
+    insert into gf_carbon_credit_daily
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        username,
+      </if>
+      <if test="carbonCredit != null">
+        carbon_credit,
+      </if>
+      <if test="carbonDate != null">
+        carbon_date,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="carbonCredit != null">
+        #{carbonCredit,jdbcType=INTEGER},
+      </if>
+      <if test="carbonDate != null">
+        #{carbonDate,jdbcType=DATE},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.callforcode.greenfarm.entity.GFCarbonCreditDaily">
+    update gf_carbon_credit_daily
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="carbonCredit != null">
+        carbon_credit = #{carbonCredit,jdbcType=INTEGER},
+      </if>
+      <if test="carbonDate != null">
+        carbon_date = #{carbonDate,jdbcType=DATE},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=CHAR},
+      </if>
+    </set>
+    where credit_daily_id = #{creditDailyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.callforcode.greenfarm.entity.GFCarbonCreditDaily">
+    update gf_carbon_credit_daily
+    set username = #{username,jdbcType=VARCHAR},
+      carbon_credit = #{carbonCredit,jdbcType=INTEGER},
+      carbon_date = #{carbonDate,jdbcType=DATE},
+      type = #{type,jdbcType=CHAR}
+    where credit_daily_id = #{creditDailyId,jdbcType=INTEGER}
+  </update>
+</mapper>

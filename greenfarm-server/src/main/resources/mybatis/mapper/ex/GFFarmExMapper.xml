@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.callforcode.greenfarm.mapper.GFFarmMapper">
+	<select id="selectFarmInfoByCommentator" parameterType="string"
+		resultMap="ResultMapWithBLOBs">
+		select
+		<include refid="Base_Column_List"></include>
+		from gf_farm gf
+		where exists (
+		select 1 from gf_product gp where gp.farm_id =gf.farm_id
+		and exists (
+		select 1 from gf_product_comment gpc where gpc.product_id =gp.product_id and
+		gpc .username =#{userName}
+		))
+	</select>
+	<select id="selectByMulConditions"
+		parameterType="java.util.List" resultMap="ResultMapWithBLOBs">
+		SELECT DISTINCT
+		f.farm_id, farm_name, f.introduction, f.username, f.total_area, f.idle_area,
+		f.location, f.icon_url,
+		f.rent_period, f.create_time, f.modify_time, f.remark, f.suited_crops ,f.latitude_longitude,f.image_url,
+		f.vr_url
+		from gf_farm f
+		left join gf_product p ON f.farm_id = p.farm_id
+		<where>
+			<if test="searchText != null and searchText != '' ">
+				OR UPPER(p.product_name) like UPPER(CONCAT('%',#{searchText},'%'))
+				OR UPPER(f.location) like UPPER(CONCAT('%',#{searchText},'%'))
+				OR UPPER(f.username) like UPPER(CONCAT('%',#{searchText},'%'))
+				OR UPPER(f.farm_name) like UPPER(CONCAT('%',#{searchText},'%'))
+			</if>
+		</where>
+		ORDER BY f.create_time DESC
+	</select>
+	<select id="queryByTotalArea" parameterType="java.util.List"
+		resultMap="ResultMapWithBLOBs">
+		SELECT DISTINCT
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from gf_farm
+		<where>
+			<if test="startArea != null">
+       		<![CDATA[ AND total_area >= #{startArea}]]>
+			</if>
+			<if test="endArea != null">
+          <![CDATA[ AND total_area <= #{endArea}]]>
+			</if>
+		</where>
+		ORDER BY create_time DESC
+
+	</select>
+	<select id="selectByWhere" parameterType="java.util.List"
+		resultMap="ResultMapWithBLOBs">
+		select
+		<include refid="Base_Column_List" />
+		,
+		<include refid="Blob_Column_List" />
+		from gf_farm
+		<where>
+			<if test="farmId != null">
+				AND farm_id = #{farmId,jdbcType=INTEGER}
+			</if>
+			<if test="farmName != null">
+				AND UPPER(farm_name) like
+				UPPER(CONCAT('%',#{farmName,jdbcType=VARCHAR},'%'))
+			</if>
+			<if test="introduction != null">
+				AND UPPER(introduction) like
+				UPPER(CONCAT('%',#{introduction,jdbcType=VARCHAR},'%'))
+			</if>
+			<if test="username != null">
+				AND username = #{username,jdbcType=VARCHAR}
+			</if>
+			<if test="suitedCrops != null">
+				AND UPPER(suited_crops) like
+				UPPER(CONCAT('%',#{suitedCrops,jdbcType=VARCHAR},'%'))
+			</if>
+			<if test="latitudeLongitude != null">
+				AND latitude_longitude = #{latitudeLongitude,jdbcType=VARCHAR}
+			</if>
+			<if test="totalArea != null">
+				AND total_area = #{totalArea,jdbcType=INTEGER}
+			</if>
+			<if test="idleArea != null">
+				AND idle_area = #{idleArea,jdbcType=INTEGER}
+			</if>
+			<if test="location != null">
+				AND UPPER(location) like
+				UPPER(CONCAT('%',#{location,jdbcType=VARCHAR},'%'))
+			</if>
+			<if test="iconUrl != null">
+				AND icon_url = #{iconUrl,jdbcType=VARCHAR}
+			</if>
+			<if test="rentPeriod != null">
+				AND rent_period = #{rentPeriod,jdbcType=VARCHAR}
+			</if>
+			<if test="createTime != null">
+				AND create_time = #{createTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="modifyTime != null">
+				AND modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+			</if>
+			<if test="remark != null">
+				AND UPPER(remark) like
+				UPPER(CONCAT('%',#{remark,jdbcType=VARCHAR},'%'))
+			</if>
+			<if test="imageUrl != null">
+				AND image_url = #{imageUrl,jdbcType=LONGVARCHAR}
+			</if>
+			<if test="vrUrl != null">
+				AND vr_url = #{vrUrl,jdbcType=LONGVARCHAR}
+			</if>
+		</where>
+		ORDER BY create_time DESC
+	</select>
+	<delete id="deleteFarmRlnTaskInfoByFarmId" parameterType="java.lang.Integer">
+		delete gf_plant_task,gf_task_step,gf_task_detail
+		from gf_farm
+				 left join gf_land on gf_farm.farm_id = gf_land.farm_id
+				 left join gf_plant_task on gf_plant_task.land_id = gf_land.land_id
+				 left join gf_task_step on gf_task_step.task_id = gf_plant_task.task_id
+				 left join gf_task_detail on gf_task_detail.step_id = gf_task_step.step_id
+		where gf_farm.farm_id = #{farmId,jdbcType=INTEGER}
+	</delete>
+	<delete id="deleteFarmRlnCommunityInfoByFarmId" parameterType="java.lang.Integer">
+		delete gf_community,gf_community_member
+		from gf_farm
+				 left join gf_community on gf_farm.farm_id = gf_community.farm_id
+				 left join gf_community_member on gf_community_member.community_id = gf_community.community_id
+		where gf_farm.farm_id = #{farmId,jdbcType=INTEGER}
+	</delete>
+	<delete id="deleteFarmRlnRentInfoByFarmId" parameterType="java.lang.Integer">
+		delete gf_farm ,gf_land,gf_rent
+		from gf_farm
+				 left join gf_land on gf_land.farm_id = gf_farm.farm_id
+				 left join gf_rent on gf_rent.farm_id = gf_land.farm_id
+		where gf_farm.farm_id = #{farmId,jdbcType=INTEGER}
+	</delete>
+	<select id="queryByLandId" parameterType="integer" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List"></include>
+		from gf_farm
+		where exists(select 1
+			from gf_land
+				where gf_land.farm_id = gf_farm.farm_id
+					and gf_land.land_id = #{landId,jdbcType=INTEGER})
+	</select>
+</mapper>
