@@ -8,13 +8,16 @@
 ## The Problem
 
 Responsible and sustainable agriculture is our major focus.
+
 The agriculture accounts for about one-third of global greenhouse gas emissions. Sustainable farming plays an important role in helping reducing carbon emissions and combat climate change, however, it still makes up a small share of farming practice. 
+
 For small farmers, their planting methods are usually neither low-carbon nor sustainable. It is difficult for them to try alternative methods because of easy susceptible to weather change, financial risks and unstable customer demands. For consumers, during COVID-19 pandemic, they have participated in CSA farms to get clean, fresh food delivered to doors. However, a large number of new local CSA farms emerged lately, they concern about the quality standards of these produce and whether the production process is green.  
 
 
 ## The Introduction of "Green Farm"
 
 Green Farm is a tech-for-good, green and digital solution based on CSA(Community Supported Agriculture). It is committed to motivating green agricultural production and sustainable living.   
+
 Green Farm iOS app has been released. Farmers can use this app to register the farm, add lands(support CSA subscriptions or lease), plant crops sustainably, track and record all steps of crops, sell produce on Green Farm mall, manage and check their green planting progress, integrated carbon curve, etc. Consumers can use this app to find CSA farms nearby, subscribe to the CSA box, rent lands, buy produce, join communities and write posts and comments, etc. In addition, Green Farm can provide green financial products to farmers and consumers.
 
 ## Competitiveness
