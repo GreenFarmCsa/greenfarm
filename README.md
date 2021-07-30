@@ -57,16 +57,17 @@ The SDGs(Sustainable Development Goals) adopted by the United Nations include "C
 ## The architecture
 ![Green Farm Functional Architecture](./docs/functional-architecture.png)
 
-1. Farmers measure the unoccupied lands by AR and leased them.
-2. Consumers browse the farm by VR and subscribe to the CSA box or even rent lands.
-3. Farmers livestream with consumers in real-time.
-4. Green Farm app stores the video and vr data within IBM Object Storage.
+The functional architecture of green farm includes three layers: consumers, farmers and financial institutions.
+1. Consumers: They can find CSA farms, subscribe to CSA Boxes, join communities, rent land, watch live, buy produce, etc.
+2. Farmers: They can manage their farms, land and produce, carry out green planting, launch live, maintain communities and topics, etc.
+3. Financial institutions: They can obtain carbon credit data and financial credit data, and recommend financial products to customers.
 
 ![Green Farm Technical Architecture](./docs/technical-architecture.png)
 
-1. Farmers measure the unoccupied lands by AR and leased them.
-2. Consumers browse the farm by VR and subscribe to the CSA box or even rent lands.
-3. Farmers livestream with consumers in real-time.
+The technical architecture of green farm includes three layers: app, server and infrastructure.
+1. The app layer includes ijkplayer, HTML5, Vue, arkit and other technologies.
+2. The server layer includes Nginx, IBM Machine Learning, IBM Federated Learning and other technologies.
+3. The infrastructure layer includes IBM Blockchain, IBM Cloud Object Storage, IBM Waston and other technologies.
 
 ## Long description
 
@@ -98,7 +99,7 @@ In the linked video below, we show all the functions of the APP, including farm 
 
 ## Built with
 
-- [IBM Blockchain Platform](https://cloud.ibm.com/catalog?search=Blockchain%20Platform#search_results) - The backend application used
+- [IBM Blockchain](https://cloud.ibm.com/catalog?search=Blockchain#search_results) - The backend application used
 - [IBM Waston](https://www.ibm.com/watson) - The recommendation logic
 - [IBM Cloud object storage](https://cloud.ibm.com/catalog?search=object%20storage#search_results) - The backend application used
 - [AR Ruler](https://github.com/TBXark/Ruler) Measure area using ARKit.
