@@ -10,8 +10,8 @@
           placeholder="Please enter"
         />
         <van-field
-          clearable
-          v-model="origin"
+          :value="origin"
+          readonly
           input-align="right"
           label="Origin"
           placeholder="Beijing"
@@ -170,6 +170,7 @@
 <script>
 import { ImagePreview } from "vant";
 import { productAdd } from "@/api/mall";
+import { queryFarmById } from "@/api/farm";
 export default {
   components: { [ImagePreview.Component.name]: ImagePreview.Component },
   data() {
@@ -218,7 +219,20 @@ export default {
       }
     }
   },
+  mounted() {
+    this.queryFarm();
+  },
   methods: {
+    queryFarm() {
+      queryFarmById({ id: this.$route.query.farmId }).then(res => {
+        if (res.data) {
+          this.origin = res.data.location;
+          this.owner = res.data.username;
+        }
+      }).catch(e => {
+        console.log(e);
+      });
+    },
     submit() {
       if (this.picList.length == 0) {
         this.$toast({position:'bottom',message:'Please Upload Images'});
@@ -261,7 +275,7 @@ export default {
         });
     },
     upload() {
-      // this.uploadLoading = true;
+      this.uploadLoading = true;
       let _this = this;
       window.UMJSBridge.callHandler(
         "jumpCamera",
@@ -300,7 +314,7 @@ export default {
             _this.$toast({ message: "upload failed", position: "bottom" });
           }
         } else {
-          _this.$toast({ message: "upload failed", position: "bottom" });
+          // _this.$toast({ message: "upload failed", position: "bottom" });
         }
       });
     },

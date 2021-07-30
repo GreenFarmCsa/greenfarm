@@ -177,10 +177,10 @@
               <div class="my-land" v-for="(item,index) in landList" :key="index">
                 <div class="myland-top">
                   <img src="@/assets/images/editframland.png" alt>
-                  <div :class="item.like">
+                  <div :class="item.like" style="background: #ff9f00;">
                     <span>Available</span>
                   </div>
-                  <div :class="item.dislike">
+                  <div :class="item.dislike" style="background: #ABABAB;">
                     <span>Unavailable</span>
                   </div>
                 </div>
@@ -403,6 +403,10 @@ export default {
   created() {
     this.getData();
   },
+  mounted() {
+    window.scrollTo(0, 1);
+    window.scrollTo(0, 0);
+  },
   methods: {
     getLocation() {
       window.UMJSBridge.callHandler("jumpMapSelect", {}, response => {
@@ -467,8 +471,8 @@ export default {
           data[i] = res.data[i];
           let createTime = this.getTime(res.data[i].createTime);
           let modifyTime = this.getTime(res.data[i].modifyTime);
-          let like = res.data[i].isRent == true ? "signs" : "hidden";
-          let dislike = res.data[i].isRent == true ? "hidden" : "sign";
+          let like = res.data[i].isRent == true ? "hidden" : "signs";
+          let dislike = res.data[i].isRent == true ? "signs" : "hidden";
           this.$set(data[i], "like", like);
           this.$set(data[i], "dislike", dislike);
           this.$set(data[i], "createTime", createTime);
@@ -597,7 +601,7 @@ export default {
       this.uploadVR();
     },
     uploads() {
-      // this.loading1 = true;
+      this.loading1 = true;
       window.UMJSBridge.callHandler(
         "jumpCamera",
         {
@@ -624,12 +628,12 @@ export default {
           this.imgslogohid = "imgs";
           this.formData = Object.assign({}, this.formData);
         } else {
-          this.$toast({ message: "fail", position: "bottom" });
+          // this.$toast({ message: "fail", position: "bottom" });
         }
       });
     },
     upload(result) {
-      // this.loading2 = true;
+      this.loading2 = true;
       window.UMJSBridge.callHandler(
         "jumpCamera",
         {
@@ -664,7 +668,7 @@ export default {
       });
     },
     uploadVR() {
-      // this.loading3 = true;
+      this.loading3 = true;
       window.UMJSBridge.callHandler("jumpVRCamera", {}, response => {});
       window.UMJSBridge.registerHandler("jumpVRCamera", data => {
         this.loading3 = false;
@@ -676,7 +680,7 @@ export default {
 
           this.formData = Object.assign({}, this.formData);
         } else {
-          this.$toast({ message: "Upload Failed", position: "bottom" });
+          // this.$toast({ message: "Upload Failed", position: "bottom" });
         }
       });
     },
@@ -948,7 +952,7 @@ export default {
                 line-height: 0.6rem;
                 height: 0.6rem;
                 border-radius: 0 0.16rem 0 0.16rem;
-                background: #ff9f00;
+                // background: #ff9f00;
                 padding: 0 0.2rem;
                 span {
                   font-family: PingFangSC-Regular;
@@ -1027,6 +1031,7 @@ export default {
             background-color: #00b459;
             height: 0.8rem;
             width: 95%;
+            font-family: Montserrat-Light;
           }
         }
       }

@@ -191,7 +191,7 @@ export default {
       }
     },
     upload() {
-      // this.uploadLoading = true;
+      this.uploadLoading = true;
       window.UMJSBridge.callHandler(
         "jumpCamera",
         {
@@ -215,7 +215,7 @@ export default {
               this.imglogohid = "imgs";
             }
           } else {
-            this.$toast({ message: "upload error", position: "bottom" });
+            // this.$toast({ message: "upload error", position: "bottom" });
           }
         }
       });

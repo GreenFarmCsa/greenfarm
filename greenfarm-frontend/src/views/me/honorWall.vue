@@ -231,7 +231,7 @@ export default {
           x: x + column * 85,
           y: y + line * 85,
           width: 71,
-          height: 711
+          height: 71
         });
       }
       if (type == "Cucumber") {

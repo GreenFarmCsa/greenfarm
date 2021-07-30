@@ -489,6 +489,7 @@ export default {
         color: #00b459;
         text-align: right;
         line-height: 0.6rem;
+        word-break: break-all;
       }
     }
     .landDetailStart {

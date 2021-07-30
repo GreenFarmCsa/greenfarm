@@ -19,3 +19,7 @@ Green Farm is based on CSA (Community Support Agriculture) philosophy, devoted t
 - Create the procedure for debugging by selecting the real machine mode.
 
 - Click the run button to insatll the program.
+
+### 4 Hint
+
+The size of opencv2.framework and IJKMediaFramework.framework exceeds the GitHub limit. Please run the project after downloading these frameworks.

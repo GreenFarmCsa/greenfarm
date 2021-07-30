@@ -474,7 +474,7 @@ export default {
       return process.env.VUE_APP_BASE_API + "/file/download?url=" + val;
     },
     uploads() {
-      // this.loading1 = true;
+      this.loading1 = true;
       window.UMJSBridge.callHandler(
         "jumpCamera",
         {
@@ -501,12 +501,12 @@ export default {
           this.imgslogohid = "imgs";
           this.formData = Object.assign({}, this.formData);
         } else {
-          this.$toast({ message: "fail", position: "bottom" });
+          // this.$toast({ message: "fail", position: "bottom" });
         }
       });
     },
     upload(result) {
-      // this.loading2 = true;
+      this.loading2 = true;
       window.UMJSBridge.callHandler(
         "jumpCamera",
         {
@@ -541,7 +541,7 @@ export default {
       });
     },
     uploadVR() {
-      // this.loading3 = true;
+      this.loading3 = true;
       window.UMJSBridge.callHandler("jumpVRCamera", {}, response => {});
       window.UMJSBridge.registerHandler("jumpVRCamera", data => {
         this.loading3 = false;
@@ -553,7 +553,7 @@ export default {
 
           this.formData = Object.assign({}, this.formData);
         } else {
-          this.$toast({ message: "Upload Failed", position: "bottom" });
+          // this.$toast({ message: "Upload Failed", position: "bottom" });
         }
       });
     },
@@ -745,6 +745,7 @@ export default {
             background-color: #00b459;
             height: 0.8rem;
             width: 95%;
+            font-family: Montserrat-Light;
           }
         }
       }

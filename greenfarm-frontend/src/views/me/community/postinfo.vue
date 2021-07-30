@@ -27,6 +27,7 @@
                 style="font-size: 0.38rem"
                 @click="like(index,item)"
               ></svg-icon>
+              <div class="like-num" @click="like(index,item)">{{item.likeSum}}</div>
             </div>
           </div>
         </div>
@@ -100,6 +101,11 @@ export default {
       };
       topicLike(params).then(res => {
         item.hasLiked = !item.hasLiked;
+        if (item.hasLiked) {
+          item.likeSum = item.likeSum + 1;
+        } else {
+          item.likeSum = item.likeSum - 1;
+        }
       }).catch(e => {
         console.log(e);
       });
@@ -171,6 +177,18 @@ export default {
             flex: 2;
             text-align: right;
             padding-top: 0.1rem;
+            .like-num {
+              display: inline-block;
+              margin-top: -0.1rem;
+              margin-left: 0.08rem;
+              vertical-align: middle;
+              font-family: "Montserrat-Light";
+              font-size: 0.28rem;
+              color: #666;
+              letter-spacing: 0;
+              text-align: center;
+              line-height: 0.56rem;
+            }
           }
         }
       }

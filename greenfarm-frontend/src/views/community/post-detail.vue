@@ -25,6 +25,7 @@
         v-else
         @click.stop="onLike(dataObj)"
       ></svg-icon>
+      <div class="like-num" @click.stop="onLike(dataObj)">{{dataObj.likeSum}}</div>
     </div>
     <div class="comments-wrapper">
       <div class="title">{{dataObj.topicName}}</div>
@@ -221,7 +222,7 @@ export default {
       vertical-align: middle;
       font-family: "Montserrat-Light";
       font-size: 0.28rem;
-      color: #000;
+      color: #666;
       letter-spacing: 0;
       text-align: center;
       line-height: 0.56rem;

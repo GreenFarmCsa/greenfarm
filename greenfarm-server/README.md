@@ -16,7 +16,7 @@ This project is the backend code for Green Farm, built on SpringBoot and embedde
 ## Getting Started
 
 ### Package
-FirstLy, copy the static resources (HTML, CSS, JS, picture) build by `greenfarm-grontend` to resources/static directory.
+FirstLy, copy the static resources (HTML, CSS, JS, picture) build by `greenfarm-frontend` to resources/static directory.
 
 ```bash
 ./mvnw clean install -P${build.profile.name}

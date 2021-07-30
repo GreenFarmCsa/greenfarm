@@ -310,7 +310,7 @@ export default {
       return process.env.VUE_APP_BASE_API + "/file/play?url=" + id;
     },
     upload() {
-      // this.uploadLoading = true;
+      this.uploadLoading = true;
       let mimeType = 2;
       window.UMJSBridge.callHandler(
         "jumpCamera",
@@ -349,7 +349,7 @@ export default {
             this.$toast({ message: "upload failed", position: "bottom" });
           }
         } else {
-          this.$toast({ message: "upload failed", position: "bottom" });
+          // this.$toast({ message: "upload failed", position: "bottom" });
         }
       });
     },

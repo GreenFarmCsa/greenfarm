@@ -176,7 +176,7 @@ export default {
       identificationsList: [],
       block: false,
       blockList: [],
-      taskId: 0,
+      taskInfo: {},
       goodsNumInCart: 0,
       productId: "",
       productItem: {},
@@ -227,7 +227,7 @@ export default {
       try {
         let res = await queryPlantTask({ productId: this.productId });
         if (res.data !== null) {
-          this.taskId = res.data.taskId;
+          this.taskInfo = res.data;
         }
       } catch (err) {
         console.log(err);
@@ -299,10 +299,20 @@ export default {
     },
     //goTaskList
     goTaskList() {
-      this.$router.push({
-        path: "/me/plant/task-list/",
-        query: { taskId: this.taskId }
-      });
+      if(this.taskInfo.taskId==undefined || this.taskInfo.taskId==null || this.taskInfo.taskId==""){
+        this.$toast({message: 'No task of this product was found'});
+      } else {
+        this.$router.push({
+          path: "/me/plant/task-list/",
+          query: {
+            taskId: this.taskInfo.taskId,
+            seedName: this.taskInfo.seedName,
+            farmId: this.taskInfo.farmId,
+            landId: this.taskInfo.landId,
+            seedId: this.taskInfo.seedId
+          }
+        });
+      }
     },
     //details
     getProductDetails() {

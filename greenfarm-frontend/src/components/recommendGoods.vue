@@ -3,7 +3,7 @@
     <div class="img">
       <img :src="imgurl((item.imageUrl && item.imageUrl.length > 0) ? item.imageUrl[0] : '')" alt>
     </div>
-    <div class="name">{{item.productName}}*{{item.number}}KG</div>
+    <div class="name">{{item.productName}}*{{item.weight}}KG</div>
     <div class="foot">
       <div class="price">
         <span class="dolar">$</span>
