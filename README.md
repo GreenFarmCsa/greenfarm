@@ -65,7 +65,7 @@ The functional architecture of green farm includes three layers: consumers, farm
 ![Green Farm Technical Architecture](./docs/technical-architecture.png)
 
 The technical architecture of green farm includes three layers: app, server and infrastructure.
-1. The app layer includes ijkplayer, HTML5, Vue, arkit and other technologies.
+1. The app layer includes IJKPlayer, HTML5, Vue, ARKit and other technologies.
 2. The server layer includes Nginx, Hyperledger Fabric, Machine Learning, Federated Learning and other technologies.
 3. The infrastructure layer includes IBM Blockchain, IBM Object Storage, IBM Waston and other technologies.
 
