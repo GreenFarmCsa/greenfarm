@@ -40,15 +40,15 @@ For small farmers, their planting methods are usually neither low-carbon nor sus
  * Connect producers and consumers in real-time (Using live streaming technology).
  * Make customers feel in the middle of farms (Using AR（Augmented Reality）and VR(Virtual Realtiy) to show farms accurately and objectively).
  * Recommend suitable farms, produce and financial products to consumers (using IBM Waston to perform efficient matching and recommendations)
- * Ensure the credibility and traceability of the sustainable planting process (Using IBM Blockchain platform).
+ * Ensure the credibility and traceability of the sustainable planting process (Using IBM Blockchain).
  * Enable consumers from different countries at multiple areas to efficiently find CSA farms nearby and get fresh produce (Using mapping technology).
  * Provide small farmers and consumers with targeted financial support (setting up a federated learning network with different financial institutions involved).
 
-Green Farm's technology is built and deployed on IBM Cloud and our program is written in: Java, Python, Html5, Css, Javascript. In addition, we used IBM Blockchain Platform, IBM Cloud object storage, IBM Federated Learning, IBM Watson Machine Learning, IBM Mysql,Live Streaming ,AR,VR and so on to make our app more professional, thus, connect small farmers who practice sustainable planting with consumers who demand for clean, credible food.
+Green Farm's technology is built and deployed on IBM Cloud and our program is written in: Java, Python, Html5, Javascript. In addition, we used IBM Blockchain, IBM Cloud object storage, IBM Federated Learning, IBM Watson Machine Learning, Live Streaming ,AR,VR and so on to make our app more professional, thus, connect small farmers who practice sustainable planting with consumers who demand for green, credible food.
 
 ### The idea
 
-The SDGs(Sustainable Development Goals) adopted by the United Nations include "Clean water and sanitation, Zero hunger, Responsible production and green consumption". Based on the SDGs, Call for Code 2021 Global Challenge calls for taking immediate actions to combat climate change. In a study published by FAO, it points out that the world's food systems are responsible for more then one-third of global greenhouse gas emissions. To motivate sustainable, traceable agriculture,  we build Green Farm to help reduce carbon footprint of food production and enable customers to find CSA farms nearby, get fresh, clean food and support the local agriculture. 
+The SDGs(Sustainable Development Goals) adopted by the United Nations include "Clean water and sanitation, Zero hunger, Responsible production and green consumption". Based on the SDGs, Call for Code 2021 Global Challenge calls for taking immediate actions to combat climate change. In a study published by FAO, it points out that the world's food systems are responsible for more then one-third of global greenhouse gas emissions. To motivate sustainable, traceable agriculture,  we build Green Farm to help reduce carbon footprint of food production and enable customers to find CSA farms nearby, get fresh, clean,green food and support the local agriculture. 
 
 ## Demo video
 
@@ -61,10 +61,12 @@ The SDGs(Sustainable Development Goals) adopted by the United Nations include "C
 2. Consumers browse the farm by VR and subscribe to the CSA box or even rent lands.
 3. Farmers livestream with consumers in real-time.
 4. Green Farm app stores the video and vr data within IBM Object Storage.
-5. The app gets farms info from IBM Mysql and gets planting instructions from the FAO database.
-6. Farmers use app to record planting info. The info will be stored on IBM Blockchain platform to ensure the credibility and traceability of the planting data.
 
 ![Green Farm Technical Architecture](./docs/technical-architecture.png)
+
+1. Farmers measure the unoccupied lands by AR and leased them.
+2. Consumers browse the farm by VR and subscribe to the CSA box or even rent lands.
+3. Farmers livestream with consumers in real-time.
 
 ## Long description
 
@@ -76,7 +78,7 @@ The SDGs(Sustainable Development Goals) adopted by the United Nations include "C
 
 1. In July 2021, Green Farm iOS version has been released to help small farms better operate with CSA philosophy, support land subscription and lease, keep photos and videos of planting activities, and livestream agricultural production activities.  It supports online sales of produce and user reviews, post creation and share in the farm community; It also supports tracking planting activities from IBM blockchain and converting them into carbon credits. Green Farm recommends farms, produce and green financial products to users through machine learning and federated learning.
 
-2. In December 2021, Android version will be available for download. More financial institutions will join the federated Learning network, Green Farm will integrate real-time weather data and improve machine learning and federal learning models, to help small farmers better practice low-carbon and green planting. The updated version also cooperates with public welfare organizations to omplete green planting donations and carbon offset, thus encouraging CSA users to cultivate a low-carbon lifestyle.
+2. In December 2021, Android version will be available for download. More financial institutions will join the federated Learning network, Green Farm will integrate real-time weather data and improve machine learning and federal learning models, to help small farmers better practice low-carbon and green planting. The updated version also cooperates with public welfare organizations to complete green planting donations and carbon offset, thus encouraging CSA users to cultivate a low-carbon lifestyle.
 
 3. In June 2022, Green Farm will be introduced to more farms in more regions, supporting the green planting data of more crops and the tracking of more carbon behaviors, to further improve the green planting guidance function. Moreover, it will connect with the local food safety certification, and help more farmers and consumers join CSA more conveniently and enjoy green, fresh and credible produce.
 
@@ -90,7 +92,7 @@ The GreenFarm project consists of four modules: `greenfarm-server`, `greenfarm-f
 - [greenfarm-ai](./greenfarm-ai/README.md)
 
 ## Live demo
-In the linked video below, we show all the functions of the APP, including farm addition, land subscription and lease, planting activity management, agricultural products display, purchase, community Posting and reply, etc.
+In the linked video below, we show all the functions of the APP, including farm addition, land subscription and lease, planting activity management, produce display, purchase, community Posting and reply, etc.
 - [Demo1](https://youtu.be/yHzeREG7658) 
 - [Demo2](https://youtu.be/GOU8UZwALRA)
 
