@@ -60,7 +60,7 @@ The SDGs(Sustainable Development Goals) adopted by the United Nations include "C
 The functional architecture of green farm includes three layers: consumers, farmers and financial institutions.
 1. Consumers: They can find CSA farms, subscribe to CSA Boxes, join communities, rent land, watch live, buy produce, etc.
 2. Farmers: They can manage their farms, land and produce, carry out green planting, launch live, maintain communities and topics, etc.
-3. Financial institutions: They can obtain carbon credit data and financial credit data, and recommend financial products to customers.
+3. Financial institutions: They can obtain carbon credit data and financial credit data, and recommend financial products to customers, etc.
 
 ![Green Farm Technical Architecture](./docs/technical-architecture.png)
 
