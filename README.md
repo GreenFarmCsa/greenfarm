@@ -29,9 +29,11 @@
 
 ### What's the problem?
 
-Food safety issues have become common nowadays. According to the 2020 FAO report, nearly 750 million people in the world have been affected by food insecurity. When people go to grocery stores, they do not know how the food is grown and if there are pesticides left. Community Supported Agriculture(CSA) is a farming philosophy that regularly provides consumers with fresh produce from local farms on a membership or subscription basis. For safety considerations, many consumers want to participate in CSA farms to get clean, fresh and credible food, it is even more desirable if they can do the planting by themselves. But people have neither purchasing channels nor lands for planting. 
+Responsible and sustainable agriculture is our major focus.
 
-Demand for CSA farms remained strong during the pandemic, since local produce in CSA boxes can be directly delivered to doors. Now small farmers care more about how to retain and attract more customers to join CSA programs. On the one hand, stable and higher revenues help small farmers resist financial risks; on the other hand, CSA-based farming is beneficial for realizing green agriculture and sustainable land management. 
+The agriculture accounts for about one-third of global greenhouse gas emissions. Sustainable farming plays an important role in helping reducing carbon emissions and combat climate change, however, it still makes up a small share of farming practice. 
+
+For small farmers, their planting methods are usually neither low-carbon nor sustainable. It is difficult for them to try alternative methods because of easy susceptible to weather change, financial risks and unstable customer demands. For consumers, during COVID-19 pandemic, they have participated in CSA farms to get clean, fresh food delivered to doors. However, a large number of new local CSA farms emerged lately, they concern about the quality standards of these produce and whether the production process is green.  
 
 ### How can technology help?
 
