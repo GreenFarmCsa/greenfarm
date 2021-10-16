@@ -52,7 +52,7 @@ The SDGs(Sustainable Development Goals) adopted by the United Nations include "C
 
 ## Demo video
 
-[![Watch the video](./docs/Youtube_video.jpg)](https://youtu.be/slUM45RRL2I)
+[![Watch the video](./docs/Youtube_video.jpg)](https://youtu.be/GounIVpCbhY)
 
 ## The architecture
 ![Green Farm Functional Architecture](./docs/functional-architecture.png)
